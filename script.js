@@ -324,4 +324,15 @@
   // Footer links sweep
   initSweep('.footer-sweep-link', 80, 3000);
 
+  // ── CTA Button Color Cycling (JS-driven) ──────────────
+  const ctaColors = ['#f0f0f5', '#00d4aa', '#7c5cff'];
+  const ctaBtn = document.querySelector('.nav-link--cta');
+  if (ctaBtn) {
+    let ctaIdx = 0;
+    setInterval(() => {
+      ctaIdx = (ctaIdx + 1) % ctaColors.length;
+      ctaBtn.style.background = ctaColors[ctaIdx];
+    }, 2700);
+  }
+
 })();

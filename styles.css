@@ -217,8 +217,7 @@ body:hover .cursor-glow {
   padding: 8px 20px;
   border-radius: 100px;
   font-weight: 600;
-  transition: all 0.3s var(--ease-out-expo);
-  animation: btnColorCyclePrimary 8s ease-in-out infinite;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
 }
 
 .nav-link--cta::after {
