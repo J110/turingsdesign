@@ -4059,16 +4059,15 @@ body:hover .cursor-glow {
    Animated Nav Links — gradient shimmer on hover + staggered entrance
    ============================================================ */
 
-.nav-link {
+.nav-link:not(.nav-link--cta) {
   animation: navLinkFadeIn 0.6s var(--ease-out-expo) both;
 }
 
-.nav-link:nth-child(1) { animation-delay: 0.1s; }
-.nav-link:nth-child(2) { animation-delay: 0.18s; }
-.nav-link:nth-child(3) { animation-delay: 0.26s; }
-.nav-link:nth-child(4) { animation-delay: 0.34s; }
-.nav-link:nth-child(5) { animation-delay: 0.42s; }
-.nav-link:nth-child(6) { animation-delay: 0.50s; }
+.nav-link:not(.nav-link--cta):nth-child(1) { animation-delay: 0.1s; }
+.nav-link:not(.nav-link--cta):nth-child(2) { animation-delay: 0.18s; }
+.nav-link:not(.nav-link--cta):nth-child(3) { animation-delay: 0.26s; }
+.nav-link:not(.nav-link--cta):nth-child(4) { animation-delay: 0.34s; }
+.nav-link:not(.nav-link--cta):nth-child(5) { animation-delay: 0.42s; }
 
 @keyframes navLinkFadeIn {
   from {
