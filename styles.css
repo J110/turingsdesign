@@ -1253,7 +1253,7 @@ body:hover .cursor-glow {
 
 .footer {
   padding: 60px 0 40px;
-  border-top: 1px solid var(--border-color);
+  border-top: none;
 }
 
 .footer-inner {
@@ -3276,9 +3276,32 @@ body:hover .cursor-glow {
 }
 
 /* ============================================================
-   Founder — Floating Particles & Ambient Glow
+   Founder — Rich Floating Elements (hero-style)
    ============================================================ */
 
+.section-founder {
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-bg-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-founder .container {
+  position: relative;
+  z-index: 1;
+}
+
+.founder-float {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Photo particles (kept) */
 .founder-particles {
   position: absolute;
   inset: -20px;
@@ -3322,8 +3345,104 @@ body:hover .cursor-glow {
   50% { opacity: 1; transform: scale(1.05); }
 }
 
+/* Isometric cubes */
+.ff-cube-1, .ff-cube-2 {
+  width: 18px;
+  height: 18px;
+}
+
+.ff-cube-1::before, .ff-cube-1::after,
+.ff-cube-2::before, .ff-cube-2::after {
+  content: '';
+  position: absolute;
+}
+
+.ff-cube-1::before, .ff-cube-2::before {
+  bottom: 0; left: 0; width: 12px; height: 14px;
+  transform: skewY(25deg); background: rgba(0,212,170,0.2);
+}
+.ff-cube-1::after, .ff-cube-2::after {
+  bottom: 0; left: 12px; width: 12px; height: 14px;
+  transform: skewY(-25deg); background: rgba(0,212,170,0.1);
+}
+
+.ff-cube-1 { top: 15%; right: 8%; animation: ffReveal 1s var(--ease-out-expo) 0.3s forwards, ffDrift1 10s ease-in-out 1.3s infinite; }
+.ff-cube-2 { bottom: 20%; left: 5%; width: 12px; height: 12px; animation: ffReveal 1s var(--ease-out-expo) 0.6s forwards, ffDrift2 12s ease-in-out 1.6s infinite; }
+.ff-cube-2::before { width: 8px; height: 10px; }
+.ff-cube-2::after { left: 8px; width: 8px; height: 10px; }
+
+@keyframes ffReveal {
+  from { opacity: 0; transform: translateY(15px) scale(0.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ffDrift1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(6deg); }
+}
+
+@keyframes ffDrift2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-5deg); }
+}
+
+/* Floating icon cards */
+.ff-card {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+}
+
+.ff-card-1 { top: 20%; left: 3%; animation: ffReveal 1s var(--ease-out-expo) 0.4s forwards, ffDrift3 8s ease-in-out 1.4s infinite; }
+.ff-card-2 { bottom: 30%; right: 4%; animation: ffReveal 1s var(--ease-out-expo) 0.7s forwards, ffDrift1 9s ease-in-out 1.7s infinite; }
+.ff-card-3 { top: 60%; right: 10%; animation: ffReveal 1s var(--ease-out-expo) 1s forwards, ffDrift2 7s ease-in-out 2s infinite; }
+
+@keyframes ffDrift3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Energy waves */
+.ff-wave {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,212,170,0.08);
+}
+
+.ff-wave-1 { top: 40%; left: 15%; animation: ffReveal 0s ease 0.5s forwards, ffWaveExpand 5s ease-out 1s infinite; }
+.ff-wave-2 { bottom: 35%; right: 15%; animation: ffReveal 0s ease 0.5s forwards, ffWaveExpand 5s ease-out 3s infinite; }
+
+@keyframes ffWaveExpand {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Section-wide particles */
+.ff-particle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-2);
+}
+
+.ff-p-1 { top: 10%; left: 20%; animation: ffReveal 0s ease 0s forwards, particleRise 5s ease-in-out 1s infinite; }
+.ff-p-2 { top: 30%; right: 18%; animation: ffReveal 0s ease 0s forwards, particleRise 6s ease-in-out 1.8s infinite; background: var(--accent-1); }
+.ff-p-3 { bottom: 15%; left: 25%; animation: ffReveal 0s ease 0s forwards, particleRise 7s ease-in-out 2.5s infinite; width: 3px; height: 3px; }
+.ff-p-4 { bottom: 25%; right: 22%; animation: ffReveal 0s ease 0s forwards, particleRise 5.5s ease-in-out 0.8s infinite; background: var(--accent-3); width: 3px; height: 3px; }
+.ff-p-5 { top: 55%; left: 8%; animation: ffReveal 0s ease 0s forwards, particleRise 6.5s ease-in-out 2s infinite; width: 2px; height: 2px; }
+.ff-p-6 { top: 45%; right: 6%; animation: ffReveal 0s ease 0s forwards, particleRise 5s ease-in-out 3s infinite; width: 2px; height: 2px; }
+.ff-p-7 { top: 70%; left: 30%; animation: ffReveal 0s ease 0s forwards, particleRise 7.5s ease-in-out 1.5s infinite; width: 3px; height: 3px; background: var(--accent-1); }
+.ff-p-8 { top: 20%; right: 30%; animation: ffReveal 0s ease 0s forwards, particleRise 6s ease-in-out 2.8s infinite; width: 2px; height: 2px; }
+
 /* ============================================================
-   Contact — Visible Animations
+   Contact — Rich Floating Elements (hero-style)
    ============================================================ */
 
 .section-contact {
@@ -3331,7 +3450,7 @@ body:hover .cursor-glow {
   overflow: hidden;
 }
 
-.contact-ambient {
+.contact-bg-floats {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -3343,27 +3462,81 @@ body:hover .cursor-glow {
   z-index: 1;
 }
 
-/* Ambient dots */
-.ca-dot {
+.contact-float {
   position: absolute;
+  opacity: 0;
+}
+
+/* Isometric cubes */
+.cf-cube {
+  width: 16px;
+  height: 16px;
+}
+
+.cf-cube::before, .cf-cube::after {
+  content: '';
+  position: absolute;
+}
+
+.cf-cube::before {
+  bottom: 0; left: 0; width: 10px; height: 12px;
+  transform: skewY(25deg); background: rgba(0,212,170,0.2);
+}
+.cf-cube::after {
+  bottom: 0; left: 10px; width: 10px; height: 12px;
+  transform: skewY(-25deg); background: rgba(0,212,170,0.1);
+}
+
+.cf-cube-1 { top: 12%; left: 6%; animation: ffReveal 1s var(--ease-out-expo) 0.2s forwards, ffDrift1 11s ease-in-out 1.2s infinite; }
+.cf-cube-2 { top: 25%; right: 4%; animation: ffReveal 1s var(--ease-out-expo) 0.5s forwards, ffDrift2 9s ease-in-out 1.5s infinite; width: 12px; height: 12px; }
+.cf-cube-2::before { width: 8px; height: 10px; }
+.cf-cube-2::after { left: 8px; width: 8px; height: 10px; }
+.cf-cube-3 { bottom: 18%; left: 10%; animation: ffReveal 1s var(--ease-out-expo) 0.8s forwards, ffDrift3 10s ease-in-out 1.8s infinite; }
+
+/* Icon cards */
+.cf-card {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+}
+
+.cf-card-1 { top: 15%; right: 10%; animation: ffReveal 1s var(--ease-out-expo) 0.3s forwards, ffDrift3 8s ease-in-out 1.3s infinite; }
+.cf-card-2 { bottom: 25%; left: 4%; animation: ffReveal 1s var(--ease-out-expo) 0.6s forwards, ffDrift1 9s ease-in-out 1.6s infinite; }
+.cf-card-3 { bottom: 12%; right: 6%; animation: ffReveal 1s var(--ease-out-expo) 0.9s forwards, ffDrift2 7s ease-in-out 1.9s infinite; }
+
+/* Particles */
+.cf-particle {
   width: 4px;
   height: 4px;
   border-radius: 50%;
   background: var(--accent-2);
-  opacity: 0;
 }
 
-.ca-dot-1 { top: 15%; left: 8%;   animation: contactDot 8s ease-in-out 0s infinite; }
-.ca-dot-2 { top: 40%; right: 5%;  animation: contactDot 7s ease-in-out 1.5s infinite; background: var(--accent-1); }
-.ca-dot-3 { bottom: 25%; left: 15%; animation: contactDot 9s ease-in-out 3s infinite; width: 3px; height: 3px; }
-.ca-dot-4 { top: 60%; right: 12%; animation: contactDot 6s ease-in-out 2s infinite; width: 3px; height: 3px; background: var(--accent-3); }
-.ca-dot-5 { bottom: 15%; right: 20%; animation: contactDot 10s ease-in-out 4s infinite; width: 2px; height: 2px; }
+.cf-p-1 { top: 20%; left: 15%; animation: ffReveal 0s ease 0s forwards, particleRise 5s ease-in-out 0.5s infinite; }
+.cf-p-2 { top: 35%; right: 15%; animation: ffReveal 0s ease 0s forwards, particleRise 6s ease-in-out 1.2s infinite; background: var(--accent-1); }
+.cf-p-3 { bottom: 30%; left: 20%; animation: ffReveal 0s ease 0s forwards, particleRise 7s ease-in-out 2s infinite; width: 3px; height: 3px; }
+.cf-p-4 { bottom: 20%; right: 18%; animation: ffReveal 0s ease 0s forwards, particleRise 5.5s ease-in-out 0.8s infinite; background: var(--accent-3); width: 3px; height: 3px; }
+.cf-p-5 { top: 55%; left: 3%; animation: ffReveal 0s ease 0s forwards, particleRise 6.5s ease-in-out 1.5s infinite; width: 2px; height: 2px; }
+.cf-p-6 { top: 45%; right: 3%; animation: ffReveal 0s ease 0s forwards, particleRise 5s ease-in-out 2.5s infinite; width: 2px; height: 2px; }
+.cf-p-7 { top: 70%; left: 25%; animation: ffReveal 0s ease 0s forwards, particleRise 7.5s ease-in-out 1.8s infinite; width: 3px; height: 3px; background: var(--accent-1); }
+.cf-p-8 { top: 10%; right: 25%; animation: ffReveal 0s ease 0s forwards, particleRise 6s ease-in-out 3s infinite; width: 2px; height: 2px; }
 
-@keyframes contactDot {
-  0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
-  30% { opacity: 0.5; transform: translateY(-10px) scale(1); }
-  70% { opacity: 0.3; transform: translateY(-20px) scale(0.8); }
+/* Energy waves */
+.cf-wave {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,212,170,0.08);
 }
+
+.cf-wave-1 { top: 30%; left: 8%; animation: ffReveal 0s ease 0.3s forwards, ffWaveExpand 5s ease-out 1s infinite; }
+.cf-wave-2 { bottom: 30%; right: 8%; animation: ffReveal 0s ease 0.3s forwards, ffWaveExpand 5s ease-out 3s infinite; }
 
 /* Office dots — pulsing green with expanding ring */
 .office-dot {
@@ -3394,7 +3567,6 @@ body:hover .cursor-glow {
   100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
 }
 
-/* Stagger office dot animations */
 .office:nth-child(2) .office-dot { animation-delay: 0.6s; }
 .office:nth-child(2) .office-dot::after { animation-delay: 0.6s; }
 .office:nth-child(3) .office-dot { animation-delay: 1.2s; }
@@ -3428,7 +3600,7 @@ body:hover .cursor-glow {
   100% { background-position: 0% 50%; }
 }
 
-/* Form inputs — glow on focus with smooth transition */
+/* Form inputs — glow on focus */
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
@@ -3457,7 +3629,7 @@ body:hover .cursor-glow {
   50% { opacity: 1; }
 }
 
-/* Contact phone icon subtle pulse */
+/* Contact phone icon pulse */
 .contact-phone svg {
   animation: phoneSvgPulse 3s ease-in-out infinite;
 }
@@ -3465,6 +3637,180 @@ body:hover .cursor-glow {
 @keyframes phoneSvgPulse {
   0%, 100% { filter: drop-shadow(0 0 0 transparent); transform: scale(1); }
   50% { filter: drop-shadow(0 0 6px rgba(0,212,170,0.3)); transform: scale(1.05); }
+}
+
+/* ============================================================
+   Navigation — Animations
+   ============================================================ */
+
+/* Logo subtle hover spin */
+.nav-logo-spin {
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.nav-logo:hover .nav-logo-spin {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* Nav link hover underline glow */
+.nav-link::after {
+  background: var(--gradient-primary) !important;
+  height: 2px !important;
+  transition: width 0.4s var(--ease-out-expo), box-shadow 0.4s;
+}
+
+.nav-link:hover::after {
+  box-shadow: 0 2px 8px rgba(0,212,170,0.3);
+}
+
+/* CTA button shimmer */
+.nav-link--cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link--cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: ctaShimmer 3s ease-in-out infinite;
+}
+
+@keyframes ctaShimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* Shimmer line under nav on scroll */
+.nav-shimmer-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,170,0.3), rgba(124,92,255,0.3), transparent);
+  background-size: 200% 100%;
+  animation: navShimmer 4s ease infinite;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.nav.scrolled .nav-shimmer-line {
+  opacity: 1;
+}
+
+@keyframes navShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   Footer — Animations
+   ============================================================ */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient top line (replaces static border) */
+.footer-gradient-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-1) 25%, var(--accent-2) 50%, var(--accent-3) 75%, transparent 100%);
+  background-size: 200% 100%;
+  animation: footerLineShimmer 4s ease infinite;
+}
+
+@keyframes footerLineShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Floating dots */
+.footer-floats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.footer-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  opacity: 0;
+}
+
+.fd-1 { top: 20%; left: 5%; animation: particleRise 6s ease-in-out 0s infinite; }
+.fd-2 { top: 30%; right: 8%; animation: particleRise 7s ease-in-out 1s infinite; background: var(--accent-1); width: 2px; height: 2px; }
+.fd-3 { bottom: 30%; left: 15%; animation: particleRise 5.5s ease-in-out 2s infinite; width: 2px; height: 2px; }
+.fd-4 { top: 40%; right: 20%; animation: particleRise 8s ease-in-out 0.5s infinite; background: var(--accent-3); width: 2px; height: 2px; }
+.fd-5 { bottom: 20%; right: 12%; animation: particleRise 6.5s ease-in-out 1.5s infinite; }
+.fd-6 { top: 15%; left: 25%; animation: particleRise 7.5s ease-in-out 2.5s infinite; width: 2px; height: 2px; background: var(--accent-1); }
+
+/* Small floating cubes */
+.footer-float-cube {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+.footer-float-cube::before,
+.footer-float-cube::after {
+  content: '';
+  position: absolute;
+}
+
+.footer-float-cube::before {
+  bottom: 0; left: 0; width: 7px; height: 8px;
+  transform: skewY(25deg); background: rgba(0,212,170,0.15);
+}
+
+.footer-float-cube::after {
+  bottom: 0; left: 7px; width: 7px; height: 8px;
+  transform: skewY(-25deg); background: rgba(0,212,170,0.08);
+}
+
+.ffc-1 { top: 25%; right: 5%; animation: ffDrift1 10s ease-in-out infinite; opacity: 0.6; }
+.ffc-2 { bottom: 25%; left: 8%; animation: ffDrift2 12s ease-in-out 1s infinite; opacity: 0.6; }
+
+/* Footer links hover glow */
+.footer-links a {
+  position: relative;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* Footer logo entrance */
+.footer-brand .nav-logo .logo-mark-img {
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.footer-brand .nav-logo:hover .logo-mark-img {
+  transform: rotate(180deg) scale(1.1);
 }
 
 /* ============================================================
@@ -3618,11 +3964,16 @@ body:hover .cursor-glow {
   }
 
   .founder-particles,
-  .founder-ambient-glow {
+  .founder-ambient-glow,
+  .founder-bg-elements {
     display: none;
   }
 
-  .contact-ambient {
+  .contact-bg-floats {
+    display: none;
+  }
+
+  .footer-floats {
     display: none;
   }
 }
