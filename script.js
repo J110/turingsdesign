@@ -278,53 +278,50 @@
     });
   });
 
-  // ── Nav Link Light Sweep Animation ──────────────────────
-  // A single light particle sweeps across all nav link letters
-  // left-to-right, lighting up each letter as it passes, then loops.
-  const navSweepLinks = document.querySelectorAll('.nav-link:not(.nav-link--cta)');
-  const allSpans = [];
-
-  // Wrap each character in a span
-  navSweepLinks.forEach((link) => {
-    const text = link.textContent;
-    link.textContent = '';
-    for (let i = 0; i < text.length; i++) {
-      const span = document.createElement('span');
-      span.textContent = text[i];
-      span.style.transition = 'color 0.3s ease-out';
-      link.appendChild(span);
-      if (text[i] !== ' ') allSpans.push(span);
-    }
-  });
-
-  const sweepDelay = 80; // ms per letter
-
-  function runSweep() {
-    let i = 0;
-    function step() {
-      // Reset the letter 2 positions behind
-      if (i >= 2) allSpans[i - 2].style.color = '';
-      // Dim the letter 1 position behind
-      if (i >= 1) allSpans[i - 1].style.color = 'rgba(0, 212, 170, 0.5)';
-      // Light up current letter
-      if (i < allSpans.length) {
-        allSpans[i].style.color = '#00d4aa';
-        i++;
-        setTimeout(step, sweepDelay);
-      } else {
-        // Clean up trailing letters
-        setTimeout(() => {
-          if (allSpans.length >= 1) allSpans[allSpans.length - 1].style.color = '';
-          if (allSpans.length >= 2) allSpans[allSpans.length - 2].style.color = '';
-          // Pause then restart
-          setTimeout(runSweep, 2000);
-        }, 200);
+  // ── Light Sweep Animation (reusable) ────────────────────
+  // A single light particle sweeps across link letters left-to-right,
+  // lighting up each letter as it passes, then loops.
+  function initSweep(selector, delay, startAfter) {
+    const links = document.querySelectorAll(selector);
+    const spans = [];
+    links.forEach((link) => {
+      const text = link.textContent;
+      link.textContent = '';
+      for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = text[i];
+        span.style.transition = 'color 0.3s ease-out';
+        link.appendChild(span);
+        if (text[i] !== ' ') spans.push(span);
       }
+    });
+    if (!spans.length) return;
+
+    function run() {
+      let i = 0;
+      function step() {
+        if (i >= 2) spans[i - 2].style.color = '';
+        if (i >= 1) spans[i - 1].style.color = 'rgba(0, 212, 170, 0.5)';
+        if (i < spans.length) {
+          spans[i].style.color = '#00d4aa';
+          i++;
+          setTimeout(step, delay);
+        } else {
+          setTimeout(() => {
+            if (spans.length >= 1) spans[spans.length - 1].style.color = '';
+            if (spans.length >= 2) spans[spans.length - 2].style.color = '';
+            setTimeout(run, 2000);
+          }, 200);
+        }
+      }
+      step();
     }
-    step();
+    setTimeout(run, startAfter);
   }
 
-  // Start after a short delay
-  setTimeout(runSweep, 1500);
+  // Nav links sweep
+  initSweep('.nav-link:not(.nav-link--cta)', 80, 1500);
+  // Footer links sweep
+  initSweep('.footer-sweep-link', 80, 3000);
 
 })();
