@@ -3999,3 +3999,133 @@ body:hover .cursor-glow {
     justify-content: center;
   }
 }
+
+/* ============================================================
+   Hero Canvas
+   ============================================================ */
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Nav Tagline Ticker (scrolling text in header)
+   ============================================================ */
+
+.nav-tagline-ticker {
+  overflow: hidden;
+  max-width: 280px;
+  mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 12px;
+  white-space: nowrap;
+  animation: tickerScroll 18s linear infinite;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ticker-item {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ticker-sep {
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Hide ticker on small screens, show logo text instead */
+@media (max-width: 768px) {
+  .nav-tagline-ticker {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Footer Ticker (scrolling text in footer)
+   ============================================================ */
+
+.footer-ticker {
+  overflow: hidden;
+  margin-top: 16px;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.footer-ticker-track {
+  display: flex;
+  gap: 16px;
+  white-space: nowrap;
+  animation: footerTickerScroll 25s linear infinite;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-ticker-track span:nth-child(odd) {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-ticker-track span:nth-child(even) {
+  opacity: 0.3;
+}
+
+@keyframes footerTickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   Work Card — Web App Badge & Multi-link
+   ============================================================ */
+
+.work-platform--web {
+  background: rgba(0, 212, 170, 0.12);
+  color: var(--accent-2);
+  border-color: rgba(0, 212, 170, 0.25);
+}
+
+.work-card-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.work-link--web {
+  color: var(--accent-2);
+}
+
+.work-link--web:hover {
+  opacity: 0.8;
+}
+
+/* ============================================================
+   Logo PNG adjustments (dark bg compatibility)
+   ============================================================ */
+
+.logo-mark-img[src="logo.png"] {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2px;
+}
