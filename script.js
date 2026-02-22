@@ -297,26 +297,34 @@
     }
   });
 
-  let sweepIdx = 0;
   const sweepDelay = 80; // ms per letter
 
-  function sweepStep() {
-    // Reset previous (with a trailing fade handled by CSS transition)
-    const prevIdx = (sweepIdx - 1 + allSpans.length) % allSpans.length;
-    const prev2Idx = (sweepIdx - 2 + allSpans.length) % allSpans.length;
-    allSpans[prev2Idx].style.color = '';
-    // Light up current letter
-    allSpans[prevIdx].style.color = 'rgba(0, 212, 170, 0.5)';
-    allSpans[sweepIdx].style.color = '#00d4aa';
-
-    sweepIdx = (sweepIdx + 1) % allSpans.length;
-
-    // Pause briefly at the end of a full sweep before looping
-    const delay = sweepIdx === 0 ? 2000 : sweepDelay;
-    setTimeout(sweepStep, delay);
+  function runSweep() {
+    let i = 0;
+    function step() {
+      // Reset the letter 2 positions behind
+      if (i >= 2) allSpans[i - 2].style.color = '';
+      // Dim the letter 1 position behind
+      if (i >= 1) allSpans[i - 1].style.color = 'rgba(0, 212, 170, 0.5)';
+      // Light up current letter
+      if (i < allSpans.length) {
+        allSpans[i].style.color = '#00d4aa';
+        i++;
+        setTimeout(step, sweepDelay);
+      } else {
+        // Clean up trailing letters
+        setTimeout(() => {
+          if (allSpans.length >= 1) allSpans[allSpans.length - 1].style.color = '';
+          if (allSpans.length >= 2) allSpans[allSpans.length - 2].style.color = '';
+          // Pause then restart
+          setTimeout(runSweep, 2000);
+        }, 200);
+      }
+    }
+    step();
   }
 
   // Start after a short delay
-  setTimeout(sweepStep, 1500);
+  setTimeout(runSweep, 1500);
 
 })();
