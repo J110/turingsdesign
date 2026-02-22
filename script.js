@@ -239,6 +239,24 @@
     });
   }
 
+  // ── Process Timeline Scroll Fill ────────────────────────
+  const processTimeline = document.querySelector('.process-timeline');
+  if (processTimeline) {
+    window.addEventListener('scroll', () => {
+      const rect = processTimeline.getBoundingClientRect();
+      const timelineTop = rect.top;
+      const timelineHeight = rect.height;
+      const windowH = window.innerHeight;
+
+      // Calculate how much of the timeline is scrolled through
+      const start = windowH * 0.6; // start filling when top reaches 60% of viewport
+      const scrolled = start - timelineTop;
+      const progress = Math.max(0, Math.min(1, scrolled / timelineHeight));
+
+      processTimeline.style.setProperty('--timeline-progress', (progress * 100) + '%');
+    }, { passive: true });
+  }
+
   // ── Tilt Effect on Work Cards ────────────────────────────
   const workCards = document.querySelectorAll('.work-card');
 

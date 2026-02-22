@@ -398,12 +398,7 @@ body:hover .cursor-glow {
   display: block;
 }
 
-.title-gradient {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* .title-gradient — see Hero Entrance Animation section for shimmer version */
 
 .text-gradient {
   background: var(--gradient-text);
@@ -1629,117 +1624,16 @@ body:hover .cursor-glow {
   50% { transform: rotateY(-8deg); }
 }
 
-/* ============================================================
-   Feature Icon Animations (About Section)
-   ============================================================ */
+/* Feature icons removed — replaced by feature-scene mini-animations */
 
-.feature-icon {
-  position: relative;
-  transition: transform 0.5s var(--ease-out-expo);
-}
-
-.feature-card:hover .feature-icon {
-  transform: scale(1.1);
-}
-
-/* Agentic AI — layers bob up/down */
-.feature-card:nth-child(1) .feature-icon svg {
-  animation: layerFloat 3s ease-in-out infinite;
-}
-
-@keyframes layerFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-/* Beautiful by Default — clock hand rotates */
-.feature-card:nth-child(2) .feature-icon svg path {
-  transform-origin: 16px 16px;
-  animation: clockSpin 8s linear infinite;
-}
-
-@keyframes clockSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Gamification — trophy shimmer */
-.feature-card:nth-child(3) .feature-icon svg {
-  animation: trophyBounce 2.5s ease-in-out infinite;
-}
-
-@keyframes trophyBounce {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-3px) rotate(2deg); }
-  75% { transform: translateY(-3px) rotate(-2deg); }
-}
-
-/* ============================================================
-   Process Step Icon Animations
-   ============================================================ */
+/* Process step icons — replaced by rich scene animations */
 
 .step-icon-wrap {
   position: relative;
   overflow: hidden;
 }
 
-/* Scanning glow overlay */
-.step-icon-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.process-step:hover .step-icon-wrap::after {
-  opacity: 1;
-}
-
-/* Discover — search pulse */
-.process-step:nth-child(1) .step-icon-wrap svg {
-  animation: searchPulse 3s ease-in-out infinite;
-}
-
-@keyframes searchPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-
-/* Design — wireframe draw */
-.process-step:nth-child(2) .step-icon-wrap svg {
-  animation: wireframeDraw 4s ease-in-out infinite;
-}
-
-@keyframes wireframeDraw {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; transform: scale(1.05); }
-}
-
-/* Build — code pulse */
-.process-step:nth-child(3) .step-icon-wrap svg {
-  animation: codePulse 2s ease-in-out infinite;
-}
-
-@keyframes codePulse {
-  0%, 100% { transform: scaleX(1); }
-  50% { transform: scaleX(1.08); }
-}
-
-/* Launch — ripple out */
-.process-step:nth-child(4) .step-icon-wrap svg circle {
-  animation: rippleOut 3s ease-in-out infinite;
-}
-
-@keyframes rippleOut {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-/* ============================================================
-   Philosophy Pillar Icon Animations
-   ============================================================ */
+/* Philosophy pillar icons — replaced by contextual animations */
 
 .pillar-icon {
   transition: transform 0.4s var(--ease-out-expo);
@@ -1747,46 +1641,6 @@ body:hover .cursor-glow {
 
 .pillar:hover .pillar-icon {
   transform: scale(1.15);
-}
-
-/* Checkmark — draw in */
-.pillar:nth-child(1) .pillar-icon svg {
-  animation: checkPulse 3s ease-in-out infinite;
-}
-
-@keyframes checkPulse {
-  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-  50% { filter: drop-shadow(0 0 6px rgba(0, 212, 170, 0.4)); }
-}
-
-/* Star — slow rotate */
-.pillar:nth-child(2) .pillar-icon svg {
-  animation: starSpin 12s linear infinite;
-}
-
-@keyframes starSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Compass — slow rotate other direction */
-.pillar:nth-child(3) .pillar-icon svg {
-  animation: compassSpin 10s linear infinite;
-}
-
-@keyframes compassSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
-
-/* Person — float */
-.pillar:nth-child(4) .pillar-icon svg {
-  animation: personFloat 3s ease-in-out infinite;
-}
-
-@keyframes personFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
 }
 
 /* ============================================================
@@ -1812,6 +1666,992 @@ body:hover .cursor-glow {
 .founder-image-wrap:hover .founder-image img {
   filter: grayscale(0%);
   transform: scale(1.05);
+}
+
+/* ============================================================
+   Hero Entrance Animation
+   ============================================================ */
+
+.hero-anim {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(6px);
+  animation: heroEntrance 1s var(--ease-out-expo) forwards;
+}
+
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-badge.hero-anim { animation-delay: 0.1s; }
+.hero-title.hero-anim { animation-delay: 0.3s; }
+.hero-subtitle.hero-anim { animation-delay: 0.55s; }
+.hero-actions.hero-anim { animation-delay: 0.75s; }
+.hero-stats.hero-anim { animation-delay: 0.95s; }
+
+/* Gradient shimmer on hero title */
+.title-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--accent-1) 0%,
+    var(--accent-2) 30%,
+    var(--accent-3) 60%,
+    var(--accent-1) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShimmer 6s ease-in-out infinite;
+}
+
+@keyframes gradientShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   Hero Floating Elements
+   ============================================================ */
+
+.hero-floats {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-float {
+  position: absolute;
+  opacity: 0;
+  animation: heroFloatIn 1.2s var(--ease-out-expo) forwards;
+}
+
+@keyframes heroFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Phone mockup */
+.hf-phone {
+  top: 18%;
+  right: 8%;
+  width: 56px;
+  height: 96px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(124, 92, 255, 0.25);
+  background: rgba(124, 92, 255, 0.04);
+  padding: 10px 6px 8px;
+  animation-delay: 1.3s;
+  animation-name: heroFloatIn;
+}
+
+.hf-phone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  animation: floatDrift1 8s ease-in-out infinite;
+}
+
+.hf-phone,
+.hf-phone * {
+  animation-fill-mode: forwards;
+}
+
+@keyframes floatDrift1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1.5deg); }
+  66% { transform: translateY(4px) rotate(-1deg); }
+}
+
+.hf-phone {
+  animation: heroFloatIn 1.2s var(--ease-out-expo) 1.3s forwards, floatDrift1 8s ease-in-out 2.5s infinite;
+}
+
+.hf-phone-notch {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(124, 92, 255, 0.3);
+  margin: 0 auto 8px;
+}
+
+.hf-phone-line {
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(124, 92, 255, 0.2);
+  margin-bottom: 5px;
+  opacity: 0;
+  animation: phoneLineAppear 0.4s ease forwards;
+}
+
+.hpl-1 { width: 80%; animation-delay: 1.8s; }
+.hpl-2 { width: 65%; animation-delay: 2.1s; }
+.hpl-3 { width: 75%; animation-delay: 2.4s; }
+
+.hf-phone-btn {
+  width: 24px;
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(124, 92, 255, 0.3);
+  margin: auto auto 0;
+  opacity: 0;
+  animation: phoneLineAppear 0.4s ease 2.7s forwards;
+}
+
+@keyframes phoneLineAppear {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+/* Chart - shows measurable outcomes */
+.hf-chart {
+  bottom: 22%;
+  right: 12%;
+  width: 64px;
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(0, 212, 170, 0.2);
+  background: rgba(0, 212, 170, 0.03);
+  animation-delay: 1.5s;
+  animation: heroFloatIn 1.2s var(--ease-out-expo) 1.5s forwards, floatDrift2 9s ease-in-out 2.7s infinite;
+}
+
+@keyframes floatDrift2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(6px) rotate(-1deg); }
+  66% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+.hf-chart-bar {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent-2);
+  opacity: 0.4;
+  transform-origin: bottom;
+  animation: chartBarGrow 0.6s var(--ease-out-expo) forwards;
+  transform: scaleY(0);
+}
+
+.hcb-1 { height: 35%; animation-delay: 2s; }
+.hcb-2 { height: 55%; animation-delay: 2.2s; }
+.hcb-3 { height: 45%; animation-delay: 2.4s; }
+.hcb-4 { height: 80%; animation-delay: 2.6s; opacity: 0.7; }
+
+@keyframes chartBarGrow {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 0.5; }
+}
+
+.hcb-4 {
+  animation-name: chartBarGrowAccent;
+}
+
+@keyframes chartBarGrowAccent {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 0.7; }
+}
+
+/* Code snippet */
+.hf-code {
+  top: 28%;
+  left: 6%;
+  width: 72px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 107, 157, 0.2);
+  background: rgba(255, 107, 157, 0.03);
+  animation-delay: 1.4s;
+  animation: heroFloatIn 1.2s var(--ease-out-expo) 1.4s forwards, floatDrift3 7s ease-in-out 2.6s infinite;
+}
+
+@keyframes floatDrift3 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(-1.5deg); }
+  66% { transform: translateY(8px) rotate(1deg); }
+}
+
+.hf-code-line {
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(255, 107, 157, 0.3);
+  margin-bottom: 4px;
+  transform-origin: left;
+  opacity: 0;
+  animation: codeLineType 0.5s var(--ease-out-expo) forwards;
+}
+
+.hcl-1 { width: 85%; animation-delay: 2s; }
+.hcl-2 { width: 60%; animation-delay: 2.3s; margin-left: 8px; }
+.hcl-3 { width: 70%; animation-delay: 2.6s; }
+
+@keyframes codeLineType {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+/* Progress ring */
+.hf-ring {
+  bottom: 30%;
+  left: 10%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation-delay: 1.6s;
+  animation: heroFloatIn 1.2s var(--ease-out-expo) 1.6s forwards, floatDrift4 10s ease-in-out 2.8s infinite;
+}
+
+@keyframes floatDrift4 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hf-ring svg {
+  position: absolute;
+}
+
+.hf-ring-progress {
+  transform-origin: center;
+  transform: rotate(-90deg);
+  animation: ringFill 2s var(--ease-out-expo) 2.2s forwards;
+}
+
+@keyframes ringFill {
+  from { stroke-dashoffset: 113; }
+  to { stroke-dashoffset: 30; }
+}
+
+.hf-ring-label {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  opacity: 0;
+  animation: fadeIn 0.5s ease 2.8s forwards;
+}
+
+/* Notification */
+.hf-notif {
+  top: 38%;
+  left: 14%;
+  width: 52px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(124, 92, 255, 0.2);
+  background: rgba(124, 92, 255, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation-delay: 1.7s;
+  animation: heroFloatIn 1.2s var(--ease-out-expo) 1.7s forwards, floatDrift1 11s ease-in-out 2.9s infinite;
+}
+
+.hf-notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hf-notif-lines span {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(124, 92, 255, 0.25);
+  margin-bottom: 3px;
+}
+
+.hf-notif-lines span:first-child { width: 20px; }
+.hf-notif-lines span:last-child { width: 14px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   About Section — Feature Scene Animations
+   ============================================================ */
+
+.feature-scene {
+  height: 80px;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(124, 92, 255, 0.03);
+  border: 1px solid rgba(124, 92, 255, 0.06);
+  overflow: hidden;
+}
+
+/* ── Agentic AI — Terminal with auto-typing code ── */
+
+.ai-terminal {
+  width: 90%;
+  height: 60px;
+  padding: 6px 10px;
+  position: relative;
+}
+
+.ai-terminal-dots {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.ai-terminal-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(124, 92, 255, 0.2);
+}
+
+.ai-terminal-dots span:first-child { background: rgba(255, 107, 157, 0.4); }
+.ai-terminal-dots span:nth-child(2) { background: rgba(0, 212, 170, 0.4); }
+.ai-terminal-dots span:last-child { background: rgba(124, 92, 255, 0.4); }
+
+.ai-line {
+  height: 2px;
+  border-radius: 1px;
+  margin-bottom: 4px;
+  transform-origin: left;
+  animation: aiLineType 1.5s var(--ease-out-expo) infinite;
+}
+
+.al-1 { width: 70%; background: rgba(124, 92, 255, 0.3); animation-delay: 0s; }
+.al-2 { width: 50%; background: rgba(0, 212, 170, 0.3); margin-left: 10px; animation-delay: 0.4s; }
+.al-3 { width: 60%; background: rgba(255, 107, 157, 0.25); margin-left: 10px; animation-delay: 0.8s; }
+.al-4 { width: 45%; background: rgba(124, 92, 255, 0.2); animation-delay: 1.2s; }
+
+@keyframes aiLineType {
+  0% { transform: scaleX(0); opacity: 0; }
+  15% { opacity: 1; }
+  30% { transform: scaleX(1); opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+.ai-cursor {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: var(--accent-1);
+  bottom: 8px;
+  animation: aiCursorMove 6s ease-in-out infinite;
+}
+
+@keyframes aiCursorMove {
+  0%, 100% { left: 10px; opacity: 1; }
+  15% { left: calc(70% + 10px); }
+  25% { left: 20px; opacity: 1; }
+  40% { left: calc(50% + 20px); }
+  50% { left: 20px; }
+  65% { left: calc(60% + 20px); }
+  75% { left: 10px; }
+  90% { left: calc(45% + 10px); }
+}
+
+/* ── Beautiful by Default — Layout elements arranging ── */
+
+.scene-design {
+  background: rgba(0, 212, 170, 0.02);
+  border-color: rgba(0, 212, 170, 0.06);
+}
+
+.design-canvas {
+  width: 90%;
+  height: 60px;
+  position: relative;
+}
+
+.design-el {
+  position: absolute;
+  border-radius: 3px;
+  animation: designArrange 4s var(--ease-out-expo) infinite;
+}
+
+.de-header {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(0, 212, 170, 0.15);
+  border: 1px solid rgba(0, 212, 170, 0.12);
+  animation-delay: 0s;
+}
+
+.de-sidebar {
+  top: 12px;
+  left: 0;
+  width: 20%;
+  bottom: 0;
+  background: rgba(0, 212, 170, 0.08);
+  border: 1px solid rgba(0, 212, 170, 0.08);
+  animation-delay: 0.2s;
+}
+
+.de-card {
+  height: 18px;
+  border: 1px solid rgba(0, 212, 170, 0.12);
+  background: rgba(0, 212, 170, 0.06);
+}
+
+.de-card-1 { top: 12px; left: 24%; width: 22%; animation-delay: 0.4s; }
+.de-card-2 { top: 12px; left: 50%; width: 22%; animation-delay: 0.6s; }
+.de-card-3 { top: 12px; left: 76%; width: 22%; animation-delay: 0.8s; }
+
+.de-hero-img {
+  top: 34px;
+  left: 24%;
+  right: 2%;
+  bottom: 2px;
+  background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(124, 92, 255, 0.08));
+  border: 1px solid rgba(0, 212, 170, 0.1);
+  animation-delay: 1s;
+}
+
+@keyframes designArrange {
+  0% { opacity: 0; transform: scale(0.5) translate(20px, 10px); }
+  20% { opacity: 1; transform: scale(1) translate(0, 0); }
+  80% { opacity: 1; transform: scale(1) translate(0, 0); }
+  100% { opacity: 0.6; }
+}
+
+/* ── Gamification — Progress ring filling + rewards ── */
+
+.scene-gamify {
+  background: rgba(124, 92, 255, 0.02);
+  border-color: rgba(124, 92, 255, 0.06);
+}
+
+.gamify-ring {
+  position: relative;
+  z-index: 1;
+}
+
+.gamify-progress {
+  animation: gamifyFill 3s var(--ease-out-expo) infinite;
+}
+
+@keyframes gamifyFill {
+  0% { stroke-dashoffset: 151; }
+  40% { stroke-dashoffset: 38; }
+  60% { stroke-dashoffset: 38; }
+  100% { stroke-dashoffset: 151; }
+}
+
+.gamify-star {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: gamifyStarPop 3s ease infinite;
+}
+
+.gamify-star::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-1);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+@keyframes gamifyStarPop {
+  0%, 35% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
+  45% { transform: translate(-50%, -50%) scale(1.3) rotate(15deg); opacity: 1; }
+  55% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+  65%, 100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+}
+
+.gamify-xp {
+  position: absolute;
+  right: 15%;
+  top: 20%;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  opacity: 0;
+  animation: xpFloat 3s ease infinite 0.5s;
+}
+
+@keyframes xpFloat {
+  0%, 30% { opacity: 0; transform: translateY(5px); }
+  40% { opacity: 1; transform: translateY(0); }
+  55% { opacity: 1; transform: translateY(-3px); }
+  70%, 100% { opacity: 0; transform: translateY(-12px); }
+}
+
+.gamify-streak {
+  position: absolute;
+  left: 15%;
+  bottom: 15%;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  opacity: 0;
+  animation: streakAppear 3s ease infinite 0.3s;
+}
+
+.streak-flame {
+  width: 10px;
+  height: 14px;
+  background: linear-gradient(to top, rgba(255, 107, 157, 0.6), rgba(255, 200, 50, 0.4));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flameDance 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes flameDance {
+  from { transform: scaleX(0.9) scaleY(1); }
+  to { transform: scaleX(1.1) scaleY(0.9); }
+}
+
+.streak-num {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--accent-3);
+}
+
+@keyframes streakAppear {
+  0%, 25% { opacity: 0; transform: scale(0.5); }
+  35% { opacity: 1; transform: scale(1.1); }
+  45% { opacity: 1; transform: scale(1); }
+  70%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   Process Section — Meaningful Step Animations
+   ============================================================ */
+
+/* Remove old simple icon animations */
+.process-step:nth-child(1) .step-icon-wrap svg,
+.process-step:nth-child(2) .step-icon-wrap svg,
+.process-step:nth-child(3) .step-icon-wrap svg,
+.process-step:nth-child(4) .step-icon-wrap svg circle {
+  animation: none;
+}
+
+/* ── Discover — Radar scan with data dots ── */
+
+.step-scene-discover {
+  position: relative;
+}
+
+.step-scene-discover svg {
+  position: relative;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.discover-dots {
+  position: absolute;
+  inset: 0;
+}
+
+.discover-dots .dd {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  opacity: 0;
+  animation: dotReveal 4s ease-in-out infinite;
+}
+
+.dd-1 { top: 18%; left: 22%; animation-delay: 0s; }
+.dd-2 { top: 30%; right: 20%; animation-delay: 0.8s; }
+.dd-3 { bottom: 28%; left: 35%; animation-delay: 1.6s; }
+.dd-4 { top: 45%; right: 30%; animation-delay: 2.4s; }
+.dd-5 { bottom: 20%; right: 25%; animation-delay: 3.2s; }
+
+@keyframes dotReveal {
+  0% { opacity: 0; transform: scale(0); }
+  10% { opacity: 1; transform: scale(1.5); }
+  20% { opacity: 0.6; transform: scale(1); box-shadow: 0 0 6px rgba(0, 212, 170, 0.4); }
+  60% { opacity: 0.6; }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+.discover-scan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 170, 0.15);
+  animation: scanPulse 4s ease-in-out infinite;
+}
+
+.discover-scan::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 170, 0.08);
+  animation: scanPulse 4s ease-in-out infinite 0.5s;
+}
+
+@keyframes scanPulse {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  30% { opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+/* ── Design — Wireframe drawing itself ── */
+
+.step-scene-design {
+  position: relative;
+  overflow: hidden;
+}
+
+.design-wireframe {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.dw-line {
+  position: absolute;
+  background: var(--accent-2);
+  opacity: 0.4;
+}
+
+.dw-h1 {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform-origin: left;
+  animation: wireframeDraw 3s var(--ease-out-expo) infinite;
+}
+
+.dw-h2 {
+  top: 14px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform-origin: left;
+  animation: wireframeDraw 3s var(--ease-out-expo) infinite 0.3s;
+}
+
+.dw-v1 {
+  top: 0;
+  left: 16px;
+  width: 1px;
+  bottom: 0;
+  transform-origin: top;
+  animation: wireframeDrawV 3s var(--ease-out-expo) infinite 0.6s;
+}
+
+.dw-block {
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  background: rgba(0, 212, 170, 0.06);
+  border-radius: 2px;
+}
+
+.dw-b1 {
+  top: 18px;
+  left: 20px;
+  width: 12px;
+  height: 12px;
+  animation: blockAppear 3s ease infinite 0.9s;
+}
+
+.dw-b2 {
+  top: 18px;
+  left: 34px;
+  width: 12px;
+  height: 12px;
+  animation: blockAppear 3s ease infinite 1.2s;
+}
+
+@keyframes wireframeDraw {
+  0% { transform: scaleX(0); opacity: 0; }
+  20% { transform: scaleX(1); opacity: 0.5; }
+  80% { transform: scaleX(1); opacity: 0.5; }
+  100% { opacity: 0.15; }
+}
+
+@keyframes wireframeDrawV {
+  0% { transform: scaleY(0); opacity: 0; }
+  20% { transform: scaleY(1); opacity: 0.5; }
+  80% { transform: scaleY(1); opacity: 0.5; }
+  100% { opacity: 0.15; }
+}
+
+@keyframes blockAppear {
+  0%, 10% { opacity: 0; transform: scale(0); }
+  30% { opacity: 1; transform: scale(1.1); }
+  40% { transform: scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* ── Build — Code brackets with typing lines ── */
+
+.step-scene-build {
+  position: relative;
+  overflow: hidden;
+}
+
+.build-code {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bc-bracket {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  opacity: 0.5;
+  animation: bracketPulse 2s ease-in-out infinite;
+}
+
+@keyframes bracketPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.bc-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bcl {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  transform-origin: left;
+  animation: buildLineType 2.5s var(--ease-out-expo) infinite;
+}
+
+.bcl-1 { width: 18px; background: rgba(0, 212, 170, 0.4); animation-delay: 0s; }
+.bcl-2 { width: 14px; background: rgba(124, 92, 255, 0.4); animation-delay: 0.3s; }
+.bcl-3 { width: 20px; background: rgba(255, 107, 157, 0.35); animation-delay: 0.6s; }
+
+@keyframes buildLineType {
+  0% { transform: scaleX(0); opacity: 0; }
+  20% { transform: scaleX(1); opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.build-cursor {
+  position: absolute;
+  width: 1.5px;
+  height: 12px;
+  background: var(--accent-2);
+  right: 22px;
+  animation: buildCursorBlink 0.8s steps(2) infinite;
+}
+
+@keyframes buildCursorBlink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* ── Launch — Rocket with expanding rings ── */
+
+.step-scene-launch {
+  position: relative;
+  overflow: visible;
+}
+
+.launch-rocket {
+  position: relative;
+  z-index: 2;
+  animation: rocketLift 3s ease-in-out infinite;
+}
+
+.rocket-body {
+  width: 8px;
+  height: 20px;
+  background: linear-gradient(to top, var(--accent-2), rgba(0, 212, 170, 0.6));
+  border-radius: 4px 4px 1px 1px;
+  position: relative;
+}
+
+.rocket-body::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 6px solid var(--accent-2);
+}
+
+.rocket-flame {
+  width: 6px;
+  height: 10px;
+  background: linear-gradient(to bottom, rgba(255, 200, 50, 0.7), rgba(255, 107, 157, 0.5), transparent);
+  border-radius: 0 0 3px 3px;
+  margin: 0 auto;
+  animation: flameDance 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes rocketLift {
+  0%, 100% { transform: translateY(2px); }
+  50% { transform: translateY(-6px); }
+}
+
+.launch-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  animation: launchRipple 3s ease-out infinite;
+}
+
+.lr-1 {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  animation-delay: 0s;
+}
+
+.lr-2 {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  animation-delay: 1s;
+}
+
+.lr-3 {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  animation-delay: 2s;
+}
+
+@keyframes launchRipple {
+  0% { transform: scale(0.5); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Process timeline scroll fill */
+.process-timeline::after {
+  content: '';
+  position: absolute;
+  left: 80px;
+  top: 0;
+  width: 1px;
+  height: var(--timeline-progress, 0%);
+  background: linear-gradient(to bottom, var(--accent-1), var(--accent-2));
+  z-index: 1;
+}
+
+/* ============================================================
+   Philosophy Pillar — Contextual Icon Animations
+   ============================================================ */
+
+/* Override old simple animations */
+.pillar:nth-child(1) .pillar-icon svg { animation: none; }
+.pillar:nth-child(2) .pillar-icon svg { animation: none; }
+.pillar:nth-child(3) .pillar-icon svg { animation: none; }
+.pillar:nth-child(4) .pillar-icon svg { animation: none; }
+
+/* Customers First — checkmark draws in + protective glow */
+.pillar:nth-child(1) .pillar-icon svg path:last-child {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: checkDraw 2.5s ease-in-out infinite;
+}
+
+@keyframes checkDraw {
+  0% { stroke-dashoffset: 20; }
+  30% { stroke-dashoffset: 0; }
+  70% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+.pillar:nth-child(1) .pillar-icon svg circle,
+.pillar:nth-child(1) .pillar-icon svg path:first-child {
+  animation: protectGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes protectGlow {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  40% { filter: drop-shadow(0 0 6px rgba(0, 212, 170, 0.5)); }
+}
+
+/* Stakeholder Health — star pulses outward with connected glow */
+.pillar:nth-child(2) .pillar-icon svg path {
+  animation: starPulseGrow 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes starPulseGrow {
+  0%, 100% { transform: scale(0.9); filter: drop-shadow(0 0 0 transparent); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(0, 212, 170, 0.4)); }
+}
+
+/* Purpose-Driven — compass needle settles */
+.pillar:nth-child(3) .pillar-icon svg {
+  animation: compassSettle 4s ease-in-out infinite;
+}
+
+@keyframes compassSettle {
+  0% { transform: rotate(-15deg); }
+  20% { transform: rotate(8deg); }
+  35% { transform: rotate(-4deg); }
+  50% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Team Wellbeing — person floats up with a warm glow */
+.pillar:nth-child(4) .pillar-icon svg {
+  animation: warmFloat 3s ease-in-out infinite;
+}
+
+@keyframes warmFloat {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0 transparent); }
+  50% { transform: translateY(-4px); filter: drop-shadow(0 0 6px rgba(0, 212, 170, 0.3)); }
 }
 
 /* ============================================================
@@ -1879,6 +2719,10 @@ body:hover .cursor-glow {
   }
 
   .process-timeline::before {
+    left: 30px;
+  }
+
+  .process-timeline::after {
     left: 30px;
   }
 
@@ -1950,6 +2794,10 @@ body:hover .cursor-glow {
   .form-row {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .hero-floats {
+    display: none;
   }
 
   .cursor-glow {
