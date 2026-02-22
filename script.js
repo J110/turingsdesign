@@ -278,4 +278,42 @@
     });
   });
 
+  // ── Nav Link Letter Cycling Animation ───────────────────
+  // Each nav link continuously decodes one random letter at a time
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  document.querySelectorAll('.nav-link:not(.nav-link--cta)').forEach((link) => {
+    const original = link.textContent;
+    let scrambledIdx = -1;
+    let tickCount = 0;
+
+    function tick() {
+      tickCount++;
+      // Every 4th frame (~66ms at 60fps), pick a new letter to glitch
+      if (tickCount % 4 === 0) {
+        // Pick a random non-space index
+        let idx;
+        do { idx = Math.floor(Math.random() * original.length); } while (original[idx] === ' ');
+        scrambledIdx = idx;
+      }
+      // Show the scrambled letter for a few frames then resolve
+      if (scrambledIdx >= 0) {
+        const phase = tickCount % 4;
+        if (phase < 2) {
+          // Show random char
+          const arr = original.split('');
+          arr[scrambledIdx] = chars[Math.floor(Math.random() * chars.length)];
+          link.textContent = arr.join('');
+        } else {
+          // Resolve back
+          link.textContent = original;
+          scrambledIdx = -1;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Stagger start per link
+    setTimeout(tick, Math.random() * 2000);
+  });
+
 })();
