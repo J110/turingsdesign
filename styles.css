@@ -218,7 +218,7 @@ body:hover .cursor-glow {
   border-radius: 100px;
   font-weight: 600;
   transition: all 0.3s var(--ease-out-expo);
-  animation: btnGlowPrimary 3s ease-in-out infinite;
+  animation: btnColorCyclePrimary 8s ease-in-out infinite;
 }
 
 .nav-link--cta::after {
@@ -447,37 +447,37 @@ body:hover .cursor-glow {
 .btn-primary {
   background: var(--text-primary);
   color: var(--bg-primary);
-  animation: btnGlowPrimary 3s ease-in-out infinite;
+  animation: btnColorCyclePrimary 8s ease-in-out infinite;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
-  animation: none;
 }
 
-@keyframes btnGlowPrimary {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-  50% { box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.12); }
+@keyframes btnColorCyclePrimary {
+  0%, 100% { background: var(--text-primary); }
+  33% { background: var(--accent-2); }
+  66% { background: var(--accent-1); }
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--text-primary);
   border: 1px solid var(--border-color-hover);
-  animation: btnGlowSecondary 3s ease-in-out 1.5s infinite;
+  animation: btnColorCycleSecondary 8s ease-in-out 2s infinite;
 }
 
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
-  animation: none;
 }
 
-@keyframes btnGlowSecondary {
-  0%, 100% { border-color: var(--border-color-hover); box-shadow: none; }
-  50% { border-color: rgba(0, 212, 170, 0.3); box-shadow: 0 0 16px 1px rgba(0, 212, 170, 0.08); }
+@keyframes btnColorCycleSecondary {
+  0%, 100% { border-color: var(--border-color-hover); color: var(--text-primary); }
+  33% { border-color: var(--accent-2); color: var(--accent-2); }
+  66% { border-color: var(--accent-1); color: var(--accent-1); }
 }
 
 .btn-sm {
