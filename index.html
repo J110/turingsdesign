@@ -241,48 +241,83 @@
       <div class="gradient-orb orb-3"></div>
       <div class="grid-overlay"></div>
     </div>
-    <!-- Hero: 3D Behavioral Transformation Scene -->
+    <!-- Hero: 3D Phone showing behavioral change -->
     <div class="hero-floats">
-      <!-- 3D isometric diamond portal (logo-inspired) -->
-      <div class="hero-float hf-diamond">
-        <div class="diamond-face diamond-top"></div>
-        <div class="diamond-face diamond-left"></div>
-        <div class="diamond-face diamond-right"></div>
-        <div class="diamond-inner-glow"></div>
-        <div class="diamond-pulse-ring"></div>
+      <!-- 3D Phone mockup with perspective -->
+      <div class="hero-float hf-phone-3d">
+        <div class="phone-3d-body">
+          <div class="phone-3d-screen">
+            <!-- App UI: progress ring filling up -->
+            <div class="app-progress-ring">
+              <svg viewBox="0 0 48 48" width="48" height="48">
+                <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(0,212,170,0.12)" stroke-width="3"/>
+                <circle cx="24" cy="24" r="20" fill="none" stroke="var(--accent-2)" stroke-width="3" stroke-dasharray="126" stroke-dashoffset="126" stroke-linecap="round" class="app-ring-fill"/>
+              </svg>
+              <div class="app-ring-level">
+                <span class="app-level-num">7</span>
+              </div>
+            </div>
+            <!-- Streak flame -->
+            <div class="app-streak">
+              <div class="app-streak-flame"></div>
+              <div class="app-streak-bars">
+                <span class="asb asb-1"></span>
+                <span class="asb asb-2"></span>
+                <span class="asb asb-3"></span>
+                <span class="asb asb-4"></span>
+                <span class="asb asb-5"></span>
+                <span class="asb asb-6"></span>
+                <span class="asb asb-7"></span>
+              </div>
+            </div>
+            <!-- Rising chart line -->
+            <div class="app-chart-line">
+              <svg viewBox="0 0 80 24" width="80" height="24">
+                <path d="M0 22 Q10 22 16 18 T32 14 T48 8 T64 6 T80 2" fill="none" stroke="var(--accent-2)" stroke-width="1.5" stroke-linecap="round" class="app-chart-path"/>
+                <path d="M0 22 Q10 22 16 18 T32 14 T48 8 T64 6 T80 2 L80 24 L0 24Z" fill="url(#chartGrad)" class="app-chart-area"/>
+                <defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(0,212,170,0.2)"/><stop offset="100%" stop-color="rgba(0,212,170,0)"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <!-- Phone metallic edge (3D depth) -->
+          <div class="phone-3d-edge-right"></div>
+          <div class="phone-3d-edge-bottom"></div>
+        </div>
+        <!-- Glow behind phone -->
+        <div class="phone-3d-glow"></div>
       </div>
-      <!-- Person approaching (muted, pre-transformation) -->
-      <div class="hero-float hf-person-before">
-        <svg viewBox="0 0 28 48" width="28" height="48" fill="none">
-          <circle cx="14" cy="6" r="5" fill="rgba(136,136,160,0.4)"/>
-          <path d="M14 12v16M7 22l7-5 7 5M9 40l5-12 5 12" stroke="rgba(136,136,160,0.4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Energy waves emanating from phone -->
+      <div class="hero-float hf-wave hf-wave-1"></div>
+      <div class="hero-float hf-wave hf-wave-2"></div>
+      <div class="hero-float hf-wave hf-wave-3"></div>
+
+      <!-- Floating particles drifting upward (change/growth) -->
+      <div class="hero-particle hp-1"></div>
+      <div class="hero-particle hp-2"></div>
+      <div class="hero-particle hp-3"></div>
+      <div class="hero-particle hp-4"></div>
+      <div class="hero-particle hp-5"></div>
+      <div class="hero-particle hp-6"></div>
+      <div class="hero-particle hp-7"></div>
+      <div class="hero-particle hp-8"></div>
+
+      <!-- Small floating UI cards (pure visual, no text) -->
+      <div class="hero-float hf-card hf-card-heart">
+        <svg viewBox="0 0 20 20" width="20" height="20" fill="none">
+          <path d="M10 17s-7-4.35-7-8.5A3.5 3.5 0 0110 6a3.5 3.5 0 017 2.5c0 4.15-7 8.5-7 8.5z" fill="rgba(255,107,157,0.5)" stroke="rgba(255,107,157,0.7)" stroke-width="1"/>
         </svg>
       </div>
-      <!-- Person emerging (glowing, post-transformation) -->
-      <div class="hero-float hf-person-after">
-        <svg viewBox="0 0 28 48" width="28" height="48" fill="none">
-          <circle cx="14" cy="6" r="5" fill="rgba(0,212,170,0.85)"/>
-          <path d="M14 12v16M7 22l7-5 7 5M9 40l5-12 5 12" stroke="rgba(0,212,170,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <div class="hero-float hf-card hf-card-bolt">
+        <svg viewBox="0 0 20 20" width="20" height="20" fill="none">
+          <path d="M11 2L4 12h5l-1 6 7-10h-5l1-6z" fill="rgba(124,92,255,0.4)" stroke="rgba(124,92,255,0.6)" stroke-width="1" stroke-linejoin="round"/>
         </svg>
-        <div class="person-glow"></div>
       </div>
-      <!-- Rising outcome labels -->
-      <div class="hero-float hf-metric hf-metric-1">
-        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 14L8 3l6 11" fill="none" stroke="var(--accent-2)" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Habits</span>
+      <div class="hero-float hf-card hf-card-arrow">
+        <svg viewBox="0 0 20 20" width="20" height="20" fill="none">
+          <path d="M10 16V4m0 0l-4 4m4-4l4 4" stroke="rgba(0,212,170,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-      <div class="hero-float hf-metric hf-metric-2">
-        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 14L8 3l6 11" fill="none" stroke="var(--accent-1)" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Wellness</span>
-      </div>
-      <div class="hero-float hf-metric hf-metric-3">
-        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 14L8 3l6 11" fill="none" stroke="var(--accent-3)" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Growth</span>
-      </div>
-      <!-- Small floating 3D cubes (isometric accents) -->
-      <div class="hero-float hf-iso-cube hf-iso-cube-1"></div>
-      <div class="hero-float hf-iso-cube hf-iso-cube-2"></div>
-      <div class="hero-float hf-iso-cube hf-iso-cube-3"></div>
     </div>
     <div class="hero-content">
       <div class="hero-badge hero-anim">
@@ -697,19 +732,17 @@
               <img src="founder.png" alt="Anmol Mohan - Founder & CEO of Turings Design, AI app development studio" loading="lazy" width="400" height="400">
             </div>
             <div class="founder-image-ring"></div>
-            <!-- Floating achievement badges around founder photo -->
-            <div class="founder-badge fb-global">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent-2)" stroke-width="1.2"/><path d="M2 7h10M7 1.2C5.5 3 4.5 5 4.5 7s1 4 2.5 5.8M7 1.2C8.5 3 9.5 5 9.5 7s-1 4-2.5 5.8" stroke="var(--accent-2)" stroke-width="1"/></svg>
-              <span>3 Countries</span>
+            <!-- Floating particles around photo -->
+            <div class="founder-particles">
+              <span class="fp fp-1"></span>
+              <span class="fp fp-2"></span>
+              <span class="fp fp-3"></span>
+              <span class="fp fp-4"></span>
+              <span class="fp fp-5"></span>
+              <span class="fp fp-6"></span>
             </div>
-            <div class="founder-badge fb-apps">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2.5" stroke="var(--accent-1)" stroke-width="1.2"/><path d="M5 6l1.5 1.5L9 5" stroke="var(--accent-1)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span>3+ Apps</span>
-            </div>
-            <div class="founder-badge fb-ai">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="var(--accent-3)" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="2" stroke="var(--accent-3)" stroke-width="1.2"/></svg>
-              <span>AI Pioneer</span>
-            </div>
+            <!-- Outer ambient glow -->
+            <div class="founder-ambient-glow"></div>
           </div>
         </div>
         <div class="founder-content reveal">
@@ -733,13 +766,13 @@
 
   <!-- Contact Section -->
   <section class="section section-contact" id="contact">
-    <!-- Background: animated 3D grid + connection lines -->
-    <div class="contact-bg-scene">
-      <div class="contact-grid-plane"></div>
-      <div class="contact-connect-line ccl-1"></div>
-      <div class="contact-connect-line ccl-2"></div>
-      <div class="contact-connect-line ccl-3"></div>
-      <div class="contact-iso-diamond"></div>
+    <!-- Subtle ambient particles -->
+    <div class="contact-ambient">
+      <span class="ca-dot ca-dot-1"></span>
+      <span class="ca-dot ca-dot-2"></span>
+      <span class="ca-dot ca-dot-3"></span>
+      <span class="ca-dot ca-dot-4"></span>
+      <span class="ca-dot ca-dot-5"></span>
     </div>
     <div class="container">
       <div class="contact-layout">
