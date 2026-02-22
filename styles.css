@@ -4012,49 +4012,44 @@ body:hover .cursor-glow {
 }
 
 /* ============================================================
-   Nav Tagline Ticker (scrolling text in header)
+   Animated Nav Links — gradient shimmer on hover + staggered entrance
    ============================================================ */
 
-.nav-tagline-ticker {
-  overflow: hidden;
-  max-width: 280px;
-  mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+.nav-link {
+  animation: navLinkFadeIn 0.6s var(--ease-out-expo) both;
 }
 
-.ticker-track {
-  display: flex;
-  gap: 12px;
-  white-space: nowrap;
-  animation: tickerScroll 18s linear infinite;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.nav-link:nth-child(1) { animation-delay: 0.1s; }
+.nav-link:nth-child(2) { animation-delay: 0.18s; }
+.nav-link:nth-child(3) { animation-delay: 0.26s; }
+.nav-link:nth-child(4) { animation-delay: 0.34s; }
+.nav-link:nth-child(5) { animation-delay: 0.42s; }
+.nav-link:nth-child(6) { animation-delay: 0.50s; }
+
+@keyframes navLinkFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.ticker-item {
-  background: var(--gradient-text);
+/* Gradient shimmer that sweeps across link text on hover */
+.nav-link:not(.nav-link--cta) {
+  background: linear-gradient(90deg, var(--text-secondary) 0%, var(--text-secondary) 40%, var(--accent-2) 50%, var(--accent-1) 60%, var(--text-secondary) 100%);
+  background-size: 250% 100%;
+  background-position: 0% 0%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transition: background-position 0.5s ease;
 }
 
-.ticker-sep {
-  color: var(--text-muted);
-  opacity: 0.4;
-}
-
-@keyframes tickerScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Hide ticker on small screens, show logo text instead */
-@media (max-width: 768px) {
-  .nav-tagline-ticker {
-    display: none;
-  }
+.nav-link:not(.nav-link--cta):hover {
+  background-position: 100% 0%;
 }
 
 /* ============================================================
@@ -4106,18 +4101,20 @@ body:hover .cursor-glow {
   border-color: rgba(0, 212, 170, 0.25);
 }
 
-.work-card-links {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
 .work-link--web {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--accent-2);
+  text-decoration: none;
+  margin-top: 8px;
+  transition: opacity 0.2s;
 }
 
 .work-link--web:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 /* ============================================================
