@@ -480,6 +480,14 @@ body:hover .cursor-glow {
   align-items: center;
   justify-content: center;
   gap: 40px;
+  position: relative;
+  z-index: 3;
+  padding: 16px 28px;
+  border-radius: 16px;
+  background: rgba(5, 5, 8, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .stat {
@@ -490,20 +498,14 @@ body:hover .cursor-glow {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
 .stat-suffix {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
 .stat-label {
