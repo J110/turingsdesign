@@ -278,29 +278,45 @@
     });
   });
 
-  // ── Nav Link Letter Cycling Animation ───────────────────
-  // Subtle: one letter glitches briefly every 3–6 seconds per link
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  document.querySelectorAll('.nav-link:not(.nav-link--cta)').forEach((link) => {
-    const original = link.textContent;
+  // ── Nav Link Light Sweep Animation ──────────────────────
+  // A single light particle sweeps across all nav link letters
+  // left-to-right, lighting up each letter as it passes, then loops.
+  const navSweepLinks = document.querySelectorAll('.nav-link:not(.nav-link--cta)');
+  const allSpans = [];
 
-    function glitch() {
-      // Pick a random non-space letter
-      let idx;
-      do { idx = Math.floor(Math.random() * original.length); } while (original[idx] === ' ');
-      // Show scrambled letter for 120ms, then restore
-      const arr = original.split('');
-      arr[idx] = chars[Math.floor(Math.random() * chars.length)];
-      link.textContent = arr.join('');
-      setTimeout(() => {
-        link.textContent = original;
-      }, 120);
-      // Next glitch in 3–6 seconds
-      setTimeout(glitch, 3000 + Math.random() * 3000);
+  // Wrap each character in a span
+  navSweepLinks.forEach((link) => {
+    const text = link.textContent;
+    link.textContent = '';
+    for (let i = 0; i < text.length; i++) {
+      const span = document.createElement('span');
+      span.textContent = text[i];
+      span.style.transition = 'color 0.3s ease-out';
+      link.appendChild(span);
+      if (text[i] !== ' ') allSpans.push(span);
     }
-
-    // Stagger initial start across links
-    setTimeout(glitch, 2000 + Math.random() * 4000);
   });
+
+  let sweepIdx = 0;
+  const sweepDelay = 80; // ms per letter
+
+  function sweepStep() {
+    // Reset previous (with a trailing fade handled by CSS transition)
+    const prevIdx = (sweepIdx - 1 + allSpans.length) % allSpans.length;
+    const prev2Idx = (sweepIdx - 2 + allSpans.length) % allSpans.length;
+    allSpans[prev2Idx].style.color = '';
+    // Light up current letter
+    allSpans[prevIdx].style.color = 'rgba(0, 212, 170, 0.5)';
+    allSpans[sweepIdx].style.color = '#00d4aa';
+
+    sweepIdx = (sweepIdx + 1) % allSpans.length;
+
+    // Pause briefly at the end of a full sweep before looping
+    const delay = sweepIdx === 0 ? 2000 : sweepDelay;
+    setTimeout(sweepStep, delay);
+  }
+
+  // Start after a short delay
+  setTimeout(sweepStep, 1500);
 
 })();

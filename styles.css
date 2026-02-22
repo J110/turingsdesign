@@ -4087,19 +4087,9 @@ body:hover .cursor-glow {
   }
 }
 
-/* Gradient shimmer that sweeps across link text on hover */
-.nav-link:not(.nav-link--cta) {
-  background: linear-gradient(90deg, var(--text-secondary) 0%, var(--text-secondary) 40%, var(--accent-2) 50%, var(--accent-1) 60%, var(--text-secondary) 100%);
-  background-size: 250% 100%;
-  background-position: 0% 0%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: background-position 0.5s ease;
-}
-
-.nav-link:not(.nav-link--cta):hover {
-  background-position: 100% 0%;
+/* Nav link letter spans inherit color for JS light sweep */
+.nav-link:not(.nav-link--cta) span {
+  color: inherit;
 }
 
 /* ============================================================
