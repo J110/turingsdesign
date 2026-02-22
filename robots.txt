@@ -1,0 +1,6 @@
+# Turings Design — robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://turingsdesign.com/sitemap.xml
