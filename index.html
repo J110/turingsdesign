@@ -241,39 +241,48 @@
       <div class="gradient-orb orb-3"></div>
       <div class="grid-overlay"></div>
     </div>
-    <!-- Floating UI elements that convey "we build apps" -->
+    <!-- Hero: 3D Behavioral Transformation Scene -->
     <div class="hero-floats">
-      <div class="hero-float hf-phone">
-        <div class="hf-phone-notch"></div>
-        <div class="hf-phone-line hpl-1"></div>
-        <div class="hf-phone-line hpl-2"></div>
-        <div class="hf-phone-line hpl-3"></div>
-        <div class="hf-phone-btn"></div>
+      <!-- 3D isometric diamond portal (logo-inspired) -->
+      <div class="hero-float hf-diamond">
+        <div class="diamond-face diamond-top"></div>
+        <div class="diamond-face diamond-left"></div>
+        <div class="diamond-face diamond-right"></div>
+        <div class="diamond-inner-glow"></div>
+        <div class="diamond-pulse-ring"></div>
       </div>
-      <div class="hero-float hf-chart">
-        <div class="hf-chart-bar hcb-1"></div>
-        <div class="hf-chart-bar hcb-2"></div>
-        <div class="hf-chart-bar hcb-3"></div>
-        <div class="hf-chart-bar hcb-4"></div>
-      </div>
-      <div class="hero-float hf-code">
-        <div class="hf-code-line hcl-1"></div>
-        <div class="hf-code-line hcl-2"></div>
-        <div class="hf-code-line hcl-3"></div>
-      </div>
-      <div class="hero-float hf-ring">
-        <svg viewBox="0 0 44 44" width="44" height="44">
-          <circle cx="22" cy="22" r="18" fill="none" stroke="rgba(0,212,170,0.15)" stroke-width="2.5"/>
-          <circle cx="22" cy="22" r="18" fill="none" stroke="var(--accent-2)" stroke-width="2.5" stroke-dasharray="113" stroke-dashoffset="30" stroke-linecap="round" class="hf-ring-progress"/>
+      <!-- Person approaching (muted, pre-transformation) -->
+      <div class="hero-float hf-person-before">
+        <svg viewBox="0 0 28 48" width="28" height="48" fill="none">
+          <circle cx="14" cy="6" r="5" fill="rgba(136,136,160,0.4)"/>
+          <path d="M14 12v16M7 22l7-5 7 5M9 40l5-12 5 12" stroke="rgba(136,136,160,0.4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="hf-ring-label">78%</span>
       </div>
-      <div class="hero-float hf-notif">
-        <div class="hf-notif-dot"></div>
-        <div class="hf-notif-lines">
-          <span></span><span></span>
-        </div>
+      <!-- Person emerging (glowing, post-transformation) -->
+      <div class="hero-float hf-person-after">
+        <svg viewBox="0 0 28 48" width="28" height="48" fill="none">
+          <circle cx="14" cy="6" r="5" fill="rgba(0,212,170,0.85)"/>
+          <path d="M14 12v16M7 22l7-5 7 5M9 40l5-12 5 12" stroke="rgba(0,212,170,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="person-glow"></div>
       </div>
+      <!-- Rising outcome labels -->
+      <div class="hero-float hf-metric hf-metric-1">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 14L8 3l6 11" fill="none" stroke="var(--accent-2)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Habits</span>
+      </div>
+      <div class="hero-float hf-metric hf-metric-2">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 14L8 3l6 11" fill="none" stroke="var(--accent-1)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Wellness</span>
+      </div>
+      <div class="hero-float hf-metric hf-metric-3">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 14L8 3l6 11" fill="none" stroke="var(--accent-3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Growth</span>
+      </div>
+      <!-- Small floating 3D cubes (isometric accents) -->
+      <div class="hero-float hf-iso-cube hf-iso-cube-1"></div>
+      <div class="hero-float hf-iso-cube hf-iso-cube-2"></div>
+      <div class="hero-float hf-iso-cube hf-iso-cube-3"></div>
     </div>
     <div class="hero-content">
       <div class="hero-badge hero-anim">
@@ -603,29 +612,71 @@
           </div>
           <div class="philosophy-pillars">
             <div class="pillar reveal">
-              <div class="pillar-icon">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2C7.4 2 2 7.4 2 14s5.4 12 12 12 12-5.4 12-12S20.6 2 14 2z" stroke="currentColor" stroke-width="1.5"/><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div class="pillar-scene ps-customers">
+                <div class="ps-shield">
+                  <div class="ps-shield-face ps-shield-front"></div>
+                  <div class="ps-shield-face ps-shield-side"></div>
+                  <div class="ps-shield-face ps-shield-top"></div>
+                  <div class="ps-shield-heart"></div>
+                </div>
+                <div class="ps-orbit-dots">
+                  <span class="ps-dot ps-dot-1"></span>
+                  <span class="ps-dot ps-dot-2"></span>
+                  <span class="ps-dot ps-dot-3"></span>
+                </div>
               </div>
               <h3>Customers First</h3>
               <p>We build apps that genuinely improve lives. User well-being is never sacrificed for engagement metrics.</p>
             </div>
             <div class="pillar reveal">
-              <div class="pillar-icon">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2l4 8 8 1-6 5 2 8-8-4-8 4 2-8-6-5 8-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <div class="pillar-scene ps-ecosystem">
+                <div class="ps-hub"></div>
+                <div class="ps-node ps-node-1"></div>
+                <div class="ps-node ps-node-2"></div>
+                <div class="ps-node ps-node-3"></div>
+                <div class="ps-node ps-node-4"></div>
+                <div class="ps-link ps-link-1"></div>
+                <div class="ps-link ps-link-2"></div>
+                <div class="ps-link ps-link-3"></div>
+                <div class="ps-link ps-link-4"></div>
+                <div class="ps-pulse-wave"></div>
               </div>
               <h3>Stakeholder Health</h3>
               <p>From employees to partners to end users — we nurture the health of the entire ecosystem our work creates.</p>
             </div>
             <div class="pillar reveal">
-              <div class="pillar-icon">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4v20M4 14h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.8 7.8l12.4 12.4M20.2 7.8L7.8 20.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div class="pillar-scene ps-purpose">
+                <div class="ps-mountain">
+                  <div class="ps-mountain-face ps-mtn-front"></div>
+                  <div class="ps-mountain-face ps-mtn-side"></div>
+                </div>
+                <div class="ps-flag">
+                  <div class="ps-flag-pole"></div>
+                  <div class="ps-flag-cloth"></div>
+                </div>
+                <div class="ps-path-trail">
+                  <span class="ps-trail-dot ps-td-1"></span>
+                  <span class="ps-trail-dot ps-td-2"></span>
+                  <span class="ps-trail-dot ps-td-3"></span>
+                  <span class="ps-trail-dot ps-td-4"></span>
+                  <span class="ps-trail-dot ps-td-5"></span>
+                </div>
+                <div class="ps-summit-glow"></div>
               </div>
               <h3>Purpose-Driven</h3>
               <p>Every app we build serves a higher purpose. Technology should elevate human potential, not diminish it.</p>
             </div>
             <div class="pillar reveal">
-              <div class="pillar-icon">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div class="pillar-scene ps-wellbeing">
+                <div class="ps-plant-pot"></div>
+                <div class="ps-plant-stem"></div>
+                <div class="ps-leaf ps-leaf-1"></div>
+                <div class="ps-leaf ps-leaf-2"></div>
+                <div class="ps-leaf ps-leaf-3"></div>
+                <div class="ps-plant-glow"></div>
+                <div class="ps-sparkle ps-sp-1"></div>
+                <div class="ps-sparkle ps-sp-2"></div>
+                <div class="ps-sparkle ps-sp-3"></div>
               </div>
               <h3>Team Wellbeing</h3>
               <p>Our people are our greatest asset. We foster growth, creativity, and balance in everything we do.</p>
@@ -646,6 +697,19 @@
               <img src="founder.png" alt="Anmol Mohan - Founder & CEO of Turings Design, AI app development studio" loading="lazy" width="400" height="400">
             </div>
             <div class="founder-image-ring"></div>
+            <!-- Floating achievement badges around founder photo -->
+            <div class="founder-badge fb-global">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--accent-2)" stroke-width="1.2"/><path d="M2 7h10M7 1.2C5.5 3 4.5 5 4.5 7s1 4 2.5 5.8M7 1.2C8.5 3 9.5 5 9.5 7s-1 4-2.5 5.8" stroke="var(--accent-2)" stroke-width="1"/></svg>
+              <span>3 Countries</span>
+            </div>
+            <div class="founder-badge fb-apps">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2.5" stroke="var(--accent-1)" stroke-width="1.2"/><path d="M5 6l1.5 1.5L9 5" stroke="var(--accent-1)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>3+ Apps</span>
+            </div>
+            <div class="founder-badge fb-ai">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="var(--accent-3)" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="2" stroke="var(--accent-3)" stroke-width="1.2"/></svg>
+              <span>AI Pioneer</span>
+            </div>
           </div>
         </div>
         <div class="founder-content reveal">
@@ -669,6 +733,14 @@
 
   <!-- Contact Section -->
   <section class="section section-contact" id="contact">
+    <!-- Background: animated 3D grid + connection lines -->
+    <div class="contact-bg-scene">
+      <div class="contact-grid-plane"></div>
+      <div class="contact-connect-line ccl-1"></div>
+      <div class="contact-connect-line ccl-2"></div>
+      <div class="contact-connect-line ccl-3"></div>
+      <div class="contact-iso-diamond"></div>
+    </div>
     <div class="container">
       <div class="contact-layout">
         <div class="contact-info reveal">
