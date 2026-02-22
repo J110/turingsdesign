@@ -3886,7 +3886,15 @@ body:hover .cursor-glow {
   }
 
   .step-visual {
-    display: none;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding-left: 84px;
+  }
+
+  .step-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
   }
 }
 
