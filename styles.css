@@ -834,6 +834,13 @@ body:hover .cursor-glow {
   border: 1px solid var(--border-color);
 }
 
+.work-links {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
 .work-link {
   display: inline-flex;
   align-items: center;
@@ -841,11 +848,13 @@ body:hover .cursor-glow {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--accent-1);
-  transition: gap 0.3s var(--ease-out-expo);
+  text-decoration: none;
+  transition: gap 0.3s var(--ease-out-expo), opacity 0.3s;
 }
 
-.work-card:hover .work-link {
+.work-link:hover {
   gap: 10px;
+  opacity: 0.8;
 }
 
 /* ============================================================
