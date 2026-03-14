@@ -1849,145 +1849,165 @@ body:hover .cursor-glow {
   overflow: hidden;
 }
 
-/* Field/pitch line across the bottom */
-.sc-field-line {
+/* Playing field — center circle outline */
+.sc-field {
   position: absolute;
-  bottom: 30%;
-  left: 10%;
-  right: 10%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 200, 120, 0.15);
+  left: 18%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+}
+
+.sc-field::after {
+  content: '';
+  position: absolute;
+  width: 200px;
   height: 1px;
   background: linear-gradient(90deg,
     transparent,
-    rgba(0, 200, 120, 0.2) 20%,
-    rgba(0, 200, 120, 0.15) 80%,
+    rgba(0, 200, 120, 0.15) 20%,
+    rgba(0, 200, 120, 0.12) 80%,
     transparent
   );
+  top: 50%;
+  left: 50%;
+  transform: translateX(-30%);
 }
 
-/* Cricket stumps — three vertical lines with a bail */
-.sc-stumps {
+/* Goal/net — rectangular frame */
+.sc-goal {
   position: absolute;
-  display: flex;
-  gap: 3px;
-  bottom: 30%;
-  right: 18%;
-  animation: stumpGlow 4s ease-in-out infinite;
+  width: 30px;
+  height: 22px;
+  border: 1.5px solid rgba(0, 200, 120, 0.3);
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  left: 12%;
+  top: 33%;
+  animation: goalGlow 4s ease-in-out infinite;
 }
 
-.sc-stump {
-  width: 1.5px;
-  height: 32px;
-  background: rgba(0, 200, 120, 0.35);
-  border-radius: 1px;
-}
-
-.sc-bail {
-  position: absolute;
-  width: 12px;
-  height: 1.5px;
-  background: rgba(0, 200, 120, 0.4);
-  top: -1px;
-  left: -1px;
-  border-radius: 1px;
-  animation: bailWobble 6s ease-in-out infinite;
-}
-
-@keyframes stumpGlow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.9; filter: drop-shadow(0 0 4px rgba(0, 200, 120, 0.15)); }
-}
-
-@keyframes bailWobble {
-  0%, 100% { transform: rotate(0deg); }
-  85% { transform: rotate(0deg); }
-  90% { transform: rotate(8deg) translateY(-2px); opacity: 0.9; }
-  95% { transform: rotate(-3deg) translateY(0); }
-}
-
-/* Cricket ball with seam */
-.sc-ball {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0, 200, 120, 0.4);
-  top: 28%;
-  left: 20%;
-  animation: ballArc 5s ease-in-out infinite;
-}
-
-.sc-ball::after {
+.sc-goal::after {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 6px;
-  border: 1px solid rgba(0, 200, 120, 0.25);
-  border-radius: 50%;
-  top: 2px;
-  left: 1px;
+  inset: 2px;
+  border: 1px dashed rgba(0, 200, 120, 0.1);
   border-bottom: none;
+  border-radius: 1px;
 }
 
-@keyframes ballArc {
-  0% { transform: translate(0, 0); opacity: 0.4; }
-  20% { opacity: 0.9; }
-  50% { transform: translate(40px, 15px); opacity: 0.7; }
-  80% { opacity: 0.4; }
-  100% { transform: translate(0, 0); opacity: 0.4; }
+@keyframes goalGlow {
+  0%, 100% { border-color: rgba(0, 200, 120, 0.2); }
+  50% { border-color: rgba(0, 200, 120, 0.45); box-shadow: 0 0 12px rgba(0, 200, 120, 0.08); }
 }
 
-/* Cricket bat silhouette */
-.sc-bat {
+/* Ball — generic sports ball in motion */
+.sc-ball {
   position: absolute;
-  width: 10px;
-  height: 35px;
-  bottom: 30%;
-  left: 35%;
-  border: 1px solid rgba(0, 200, 120, 0.25);
-  border-radius: 3px 3px 1px 1px;
-  background: rgba(0, 200, 120, 0.03);
-  transform: rotate(-15deg);
-  transform-origin: bottom center;
-  animation: batSwing 5s ease-in-out infinite;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 200, 120, 0.5);
+  left: 30%;
+  top: 40%;
+  animation: ballFly 4.5s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(0, 200, 120, 0.15);
 }
 
-.sc-bat::after {
+@keyframes ballFly {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  15% { opacity: 0.9; }
+  50% { transform: translate(-35px, -5px) scale(0.9); opacity: 0.8; }
+  85% { opacity: 0.5; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+}
+
+/* Motion trails behind ball */
+.sc-trail {
+  position: absolute;
+  height: 1.5px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 200, 120, 0.3));
+  top: 46%;
+  animation: trailFade 4.5s ease-in-out infinite;
+}
+
+.sc-trail-1 { left: 32%; width: 20px; animation-delay: 0s; }
+.sc-trail-2 { left: 34%; width: 14px; top: 44%; animation-delay: 0.1s; }
+.sc-trail-3 { left: 33%; width: 16px; top: 48%; animation-delay: 0.2s; }
+
+@keyframes trailFade {
+  0%, 100% { opacity: 0; }
+  15% { opacity: 0.7; }
+  50% { opacity: 0; }
+}
+
+/* Live score ticker — top center */
+.sc-score {
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  width: 55px;
+  height: 16px;
+  border: 1px solid rgba(0, 200, 120, 0.2);
+  border-radius: 3px;
+  background: rgba(0, 200, 120, 0.04);
+  animation: scorePulse 4s ease-in-out infinite;
+}
+
+.sc-score::before {
   content: '';
   position: absolute;
   width: 4px;
-  height: 14px;
-  bottom: -13px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(0, 200, 120, 0.6);
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  animation: scoreDot 2s ease-in-out infinite;
+}
+
+.sc-score::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 8px;
+  background: rgba(0, 200, 120, 0.2);
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  border: 1px solid rgba(0, 200, 120, 0.2);
-  border-radius: 1px;
+  transform: translateY(-50%);
 }
 
-@keyframes batSwing {
-  0%, 100% { transform: rotate(-15deg); }
-  45% { transform: rotate(-15deg); }
-  50% { transform: rotate(10deg); }
-  55% { transform: rotate(-15deg); }
+@keyframes scorePulse {
+  0%, 100% { border-color: rgba(0, 200, 120, 0.15); }
+  50% { border-color: rgba(0, 200, 120, 0.35); }
 }
 
-/* Audio waveform bars — right side, commentary visualization */
+@keyframes scoreDot {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Audio waveform bars — right side, commentary */
 .wave-bar {
   position: absolute;
   width: 2.5px;
   border-radius: 3px;
   background: rgba(0, 200, 120, 0.5);
-  bottom: 55%;
+  bottom: 42%;
   transform-origin: bottom center;
   animation: waveAnim 1.8s ease-in-out infinite;
 }
 
-.wb-1 { right: 34%; height: 14px; animation-delay: 0s; }
-.wb-2 { right: 30%; height: 24px; animation-delay: 0.15s; }
-.wb-3 { right: 26%; height: 16px; animation-delay: 0.3s; }
-.wb-4 { right: 22%; height: 30px; animation-delay: 0.45s; }
-.wb-5 { right: 18%; height: 20px; animation-delay: 0.6s; }
-.wb-6 { right: 14%; height: 28px; animation-delay: 0.75s; }
-.wb-7 { right: 10%; height: 12px; animation-delay: 0.9s; }
+.wb-1 { right: 30%; height: 14px; animation-delay: 0s; }
+.wb-2 { right: 26%; height: 26px; animation-delay: 0.15s; }
+.wb-3 { right: 22%; height: 16px; animation-delay: 0.3s; }
+.wb-4 { right: 18%; height: 32px; animation-delay: 0.45s; }
+.wb-5 { right: 14%; height: 18px; animation-delay: 0.6s; }
 
 @keyframes waveAnim {
   0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
@@ -2001,7 +2021,7 @@ body:hover .cursor-glow {
   height: 18px;
   border: 1.5px solid rgba(0, 200, 120, 0.4);
   border-radius: 6px 6px 0 0;
-  bottom: 15%;
+  bottom: 18%;
   right: 20%;
   animation: micPulse 3s ease-in-out infinite;
 }
@@ -2028,43 +2048,6 @@ body:hover .cursor-glow {
     border-color: rgba(0, 200, 120, 0.65);
     box-shadow: 0 0 10px rgba(0, 200, 120, 0.15);
   }
-}
-
-/* Live score ticker */
-.sc-score {
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 16px;
-  border: 1px solid rgba(0, 200, 120, 0.2);
-  border-radius: 3px;
-  background: rgba(0, 200, 120, 0.04);
-  animation: scorePulse 4s ease-in-out infinite;
-}
-
-.sc-score::before {
-  content: '';
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(0, 200, 120, 0.6);
-  top: 50%;
-  left: 6px;
-  transform: translateY(-50%);
-  animation: scoreDot 2s ease-in-out infinite;
-}
-
-@keyframes scorePulse {
-  0%, 100% { border-color: rgba(0, 200, 120, 0.15); }
-  50% { border-color: rgba(0, 200, 120, 0.35); }
-}
-
-@keyframes scoreDot {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
 }
 
 /* ============================================================
