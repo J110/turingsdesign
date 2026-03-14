@@ -1646,7 +1646,7 @@ body:hover .cursor-glow {
 }
 
 /* ============================================================
-   Paladin Card Visual — Suit Silhouette
+   Paladin Card Visual — Formal Suit Silhouette
    ============================================================ */
 
 .work-visual-paladin {
@@ -1659,92 +1659,180 @@ body:hover .cursor-glow {
   overflow: hidden;
 }
 
-.suit-lapel {
+/* Notch lapels — wide, angled jacket front */
+.formal-lapel {
   position: absolute;
-  width: 28px;
-  height: 60px;
-  border: 1.5px solid rgba(210, 170, 80, 0.35);
-  background: rgba(210, 170, 80, 0.04);
-  top: 35%;
+  width: 40px;
+  height: 80px;
+  border: 1.5px solid rgba(210, 170, 80, 0.3);
+  background: rgba(210, 170, 80, 0.03);
+  top: 30%;
+  animation: formalLapelGlow 4s ease-in-out infinite;
 }
 
-.lapel-left {
-  left: calc(50% - 30px);
-  border-radius: 2px 12px 0 0;
-  transform: skewX(8deg);
-  transform-origin: bottom right;
-  animation: lapelBreath 4s ease-in-out infinite;
+.formal-lapel-l {
+  left: calc(50% - 42px);
+  border-right: none;
+  border-radius: 0 0 0 4px;
+  clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.lapel-right {
-  right: calc(50% - 30px);
-  border-radius: 12px 2px 0 0;
-  transform: skewX(-8deg);
-  transform-origin: bottom left;
-  animation: lapelBreath 4s ease-in-out infinite 0.3s;
+.formal-lapel-r {
+  right: calc(50% - 42px);
+  border-left: none;
+  border-radius: 0 0 4px 0;
+  clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
+  animation-delay: 0.3s;
 }
 
-@keyframes lapelBreath {
-  0%, 100% { opacity: 0.5; border-color: rgba(210, 170, 80, 0.25); }
-  50% { opacity: 1; border-color: rgba(210, 170, 80, 0.55); }
+@keyframes formalLapelGlow {
+  0%, 100% {
+    border-color: rgba(210, 170, 80, 0.2);
+    background: rgba(210, 170, 80, 0.02);
+  }
+  50% {
+    border-color: rgba(210, 170, 80, 0.5);
+    background: rgba(210, 170, 80, 0.06);
+  }
 }
 
-.suit-button {
+/* Collar points peeking above lapels */
+.formal-collar {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(210, 170, 80, 0.4);
+  width: 14px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  top: 27%;
+}
+
+.formal-collar-l {
+  left: calc(50% - 12px);
+  transform: rotate(-30deg);
+  border-radius: 2px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.formal-collar-r {
+  right: calc(50% - 12px);
+  transform: rotate(30deg);
+  border-radius: 2px;
+  border-bottom: none;
+  border-right: none;
+}
+
+/* Necktie — long tapered shape */
+.formal-tie {
+  position: absolute;
+  width: 14px;
+  height: 55px;
+  top: 34%;
   left: 50%;
   transform: translateX(-50%);
-  animation: buttonGlow 3s ease-in-out infinite;
+  background: linear-gradient(180deg,
+    rgba(210, 170, 80, 0.12) 0%,
+    rgba(210, 170, 80, 0.06) 100%
+  );
+  border: 1px solid rgba(210, 170, 80, 0.25);
+  clip-path: polygon(15% 0%, 85% 0%, 65% 100%, 50% 105%, 35% 100%);
+  animation: tieShine 5s ease-in-out infinite;
 }
 
-.sb-1 { top: 52%; animation-delay: 0s; }
-.sb-2 { top: 60%; animation-delay: 0.4s; }
-.sb-3 { top: 68%; animation-delay: 0.8s; }
-
-@keyframes buttonGlow {
+@keyframes tieShine {
   0%, 100% {
-    border-color: rgba(210, 170, 80, 0.3);
+    border-color: rgba(210, 170, 80, 0.2);
+    background: linear-gradient(180deg, rgba(210, 170, 80, 0.08) 0%, rgba(210, 170, 80, 0.04) 100%);
+  }
+  50% {
+    border-color: rgba(210, 170, 80, 0.45);
+    background: linear-gradient(180deg, rgba(210, 170, 80, 0.18) 0%, rgba(210, 170, 80, 0.08) 100%);
+  }
+}
+
+/* Tie knot */
+.formal-tie-knot {
+  position: absolute;
+  width: 10px;
+  height: 8px;
+  top: 32%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(210, 170, 80, 0.4);
+  border-radius: 2px 2px 0 0;
+  background: rgba(210, 170, 80, 0.1);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  animation: tieShine 5s ease-in-out infinite;
+}
+
+/* Pocket square — folded triangle on left breast */
+.formal-pocket {
+  position: absolute;
+  width: 14px;
+  height: 10px;
+  top: 54%;
+  left: calc(50% - 30px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  clip-path: polygon(15% 100%, 50% 15%, 85% 100%);
+  animation: pocketPeek 6s ease-in-out infinite;
+}
+
+@keyframes pocketPeek {
+  0%, 100% { opacity: 0.35; transform: translateY(1px); }
+  50% { opacity: 0.85; transform: translateY(-1px); }
+}
+
+/* Two buttons — classic formal two-button */
+.formal-btn {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(210, 170, 80, 0.35);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: formalBtnGlow 3.5s ease-in-out infinite;
+}
+
+.formal-btn-1 { top: 56%; animation-delay: 0s; }
+.formal-btn-2 { top: 64%; animation-delay: 0.5s; }
+
+@keyframes formalBtnGlow {
+  0%, 100% {
+    border-color: rgba(210, 170, 80, 0.25);
     box-shadow: none;
   }
   50% {
-    border-color: rgba(210, 170, 80, 0.7);
-    box-shadow: 0 0 10px rgba(210, 170, 80, 0.25);
+    border-color: rgba(210, 170, 80, 0.65);
+    box-shadow: 0 0 8px rgba(210, 170, 80, 0.2);
   }
 }
 
-.suit-stitch {
+/* Subtle diagonal light sweep */
+.formal-shimmer {
   position: absolute;
-  width: 1px;
-  height: 40px;
-  top: 42%;
+  width: 150%;
+  height: 30px;
+  top: 30%;
+  left: -25%;
   background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(210, 170, 80, 0.3) 20%,
-    rgba(210, 170, 80, 0.3) 25%,
-    transparent 30%,
-    rgba(210, 170, 80, 0.3) 35%,
-    rgba(210, 170, 80, 0.3) 40%,
-    transparent 45%,
-    rgba(210, 170, 80, 0.3) 50%,
-    rgba(210, 170, 80, 0.3) 55%,
-    transparent 60%,
-    rgba(210, 170, 80, 0.3) 65%,
-    rgba(210, 170, 80, 0.3) 70%,
-    transparent 75%
+    105deg,
+    transparent 40%,
+    rgba(210, 170, 80, 0.05) 48%,
+    rgba(210, 170, 80, 0.09) 50%,
+    rgba(210, 170, 80, 0.05) 52%,
+    transparent 60%
   );
-  animation: stitchFade 5s ease-in-out infinite;
+  animation: formalShimmer 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.stitch-1 { left: calc(50% - 42px); }
-.stitch-2 { right: calc(50% - 42px); animation-delay: 1s; }
-
-@keyframes stitchFade {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+@keyframes formalShimmer {
+  0% { transform: translateX(-100%) rotate(-15deg); opacity: 0; }
+  40% { opacity: 0; }
+  50% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { transform: translateX(100%) rotate(-15deg); opacity: 0; }
 }
 
 /* ============================================================
