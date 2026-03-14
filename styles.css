@@ -1645,6 +1645,325 @@ body:hover .cursor-glow {
   50% { transform: rotateY(-8deg); }
 }
 
+/* ============================================================
+   Paladin Card Visual — Suit Silhouette
+   ============================================================ */
+
+.work-visual-paladin {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.suit-lapel {
+  position: absolute;
+  width: 28px;
+  height: 60px;
+  border: 1.5px solid rgba(210, 170, 80, 0.35);
+  background: rgba(210, 170, 80, 0.04);
+  top: 35%;
+}
+
+.lapel-left {
+  left: calc(50% - 30px);
+  border-radius: 2px 12px 0 0;
+  transform: skewX(8deg);
+  transform-origin: bottom right;
+  animation: lapelBreath 4s ease-in-out infinite;
+}
+
+.lapel-right {
+  right: calc(50% - 30px);
+  border-radius: 12px 2px 0 0;
+  transform: skewX(-8deg);
+  transform-origin: bottom left;
+  animation: lapelBreath 4s ease-in-out infinite 0.3s;
+}
+
+@keyframes lapelBreath {
+  0%, 100% { opacity: 0.5; border-color: rgba(210, 170, 80, 0.25); }
+  50% { opacity: 1; border-color: rgba(210, 170, 80, 0.55); }
+}
+
+.suit-button {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(210, 170, 80, 0.4);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: buttonGlow 3s ease-in-out infinite;
+}
+
+.sb-1 { top: 52%; animation-delay: 0s; }
+.sb-2 { top: 60%; animation-delay: 0.4s; }
+.sb-3 { top: 68%; animation-delay: 0.8s; }
+
+@keyframes buttonGlow {
+  0%, 100% {
+    border-color: rgba(210, 170, 80, 0.3);
+    box-shadow: none;
+  }
+  50% {
+    border-color: rgba(210, 170, 80, 0.7);
+    box-shadow: 0 0 10px rgba(210, 170, 80, 0.25);
+  }
+}
+
+.suit-stitch {
+  position: absolute;
+  width: 1px;
+  height: 40px;
+  top: 42%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(210, 170, 80, 0.3) 20%,
+    rgba(210, 170, 80, 0.3) 25%,
+    transparent 30%,
+    rgba(210, 170, 80, 0.3) 35%,
+    rgba(210, 170, 80, 0.3) 40%,
+    transparent 45%,
+    rgba(210, 170, 80, 0.3) 50%,
+    rgba(210, 170, 80, 0.3) 55%,
+    transparent 60%,
+    rgba(210, 170, 80, 0.3) 65%,
+    rgba(210, 170, 80, 0.3) 70%,
+    transparent 75%
+  );
+  animation: stitchFade 5s ease-in-out infinite;
+}
+
+.stitch-1 { left: calc(50% - 42px); }
+.stitch-2 { right: calc(50% - 42px); animation-delay: 1s; }
+
+@keyframes stitchFade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ============================================================
+   SportsComm Card Visual — Waveform & Mic
+   ============================================================ */
+
+.work-visual-sportscomm {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.wave-bar {
+  position: absolute;
+  width: 3px;
+  border-radius: 3px;
+  background: rgba(0, 200, 120, 0.5);
+  bottom: 50%;
+  transform-origin: bottom center;
+  animation: waveAnim 1.8s ease-in-out infinite;
+}
+
+.wb-1 { left: 22%; height: 18px; animation-delay: 0s; }
+.wb-2 { left: 28%; height: 30px; animation-delay: 0.15s; }
+.wb-3 { left: 34%; height: 22px; animation-delay: 0.3s; }
+.wb-4 { left: 40%; height: 38px; animation-delay: 0.45s; }
+.wb-5 { left: 46%; height: 26px; animation-delay: 0.6s; }
+.wb-6 { left: 52%; height: 34px; animation-delay: 0.75s; }
+.wb-7 { left: 58%; height: 20px; animation-delay: 0.9s; }
+.wb-8 { left: 64%; height: 32px; animation-delay: 1.05s; }
+.wb-9 { left: 70%; height: 16px; animation-delay: 1.2s; }
+
+@keyframes waveAnim {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
+  50% { transform: scaleY(1.2); opacity: 1; }
+}
+
+.sc-mic {
+  position: absolute;
+  width: 14px;
+  height: 22px;
+  border: 1.5px solid rgba(0, 200, 120, 0.45);
+  border-radius: 7px 7px 0 0;
+  bottom: 28%;
+  left: 46%;
+  transform: translateX(-50%);
+  animation: micPulse 3s ease-in-out infinite;
+}
+
+.sc-mic::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 12px;
+  border: 1.5px solid rgba(0, 200, 120, 0.3);
+  border-top: none;
+  border-radius: 0 0 11px 11px;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes micPulse {
+  0%, 100% {
+    border-color: rgba(0, 200, 120, 0.35);
+    box-shadow: none;
+  }
+  50% {
+    border-color: rgba(0, 200, 120, 0.7);
+    box-shadow: 0 0 14px rgba(0, 200, 120, 0.2);
+  }
+}
+
+.sc-ball {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 200, 120, 0.35);
+  top: 22%;
+  right: 24%;
+  animation: ballBounce 4s ease-in-out infinite;
+}
+
+.sc-ball::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 200, 120, 0.3);
+  top: 50%;
+  border-radius: 50%;
+}
+
+.sc-ball::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: rgba(0, 200, 120, 0.3);
+  left: 50%;
+  border-radius: 50%;
+}
+
+@keyframes ballBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  25% { transform: translateY(-8px); opacity: 0.9; }
+  50% { transform: translateY(0); opacity: 0.5; }
+  75% { transform: translateY(-4px); opacity: 0.7; }
+}
+
+/* ============================================================
+   NudgeMat Card Visual — Mat with Guide Markers
+   ============================================================ */
+
+.work-visual-nudgemat {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.mat-outline {
+  position: absolute;
+  width: 120px;
+  height: 70px;
+  border: 1.5px solid rgba(230, 150, 50, 0.3);
+  border-radius: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: matPulse 4s ease-in-out infinite;
+}
+
+@keyframes matPulse {
+  0%, 100% { border-color: rgba(230, 150, 50, 0.25); }
+  50% { border-color: rgba(230, 150, 50, 0.5); box-shadow: 0 0 20px rgba(230, 150, 50, 0.08); }
+}
+
+.mat-guide {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px dashed rgba(230, 150, 50, 0.3);
+  border-radius: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: guideAppear 3.5s ease-in-out infinite;
+}
+
+.mg-1 { left: calc(50% - 40px); animation-delay: 0s; }
+.mg-2 { left: calc(50% - 10px); animation-delay: 0.6s; }
+.mg-3 { left: calc(50% + 20px); animation-delay: 1.2s; }
+
+@keyframes guideAppear {
+  0%, 100% { opacity: 0.2; border-color: rgba(230, 150, 50, 0.2); }
+  50% { opacity: 0.8; border-color: rgba(230, 150, 50, 0.5); }
+}
+
+.mat-footprint {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  border-radius: 5px 5px 3px 3px;
+  border: 1px solid rgba(230, 150, 50, 0.3);
+  bottom: 28%;
+  animation: stepIn 5s ease-in-out infinite;
+}
+
+.fp-left { left: calc(50% - 14px); animation-delay: 0s; }
+.fp-right { right: calc(50% - 14px); animation-delay: 0.5s; }
+
+@keyframes stepIn {
+  0%, 100% { opacity: 0.15; transform: translateY(5px); }
+  30% { opacity: 0.7; transform: translateY(0); }
+  70% { opacity: 0.7; transform: translateY(0); }
+}
+
+.mat-glow {
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(230, 150, 50, 0.1), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: matGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes matGlowPulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.9); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* ============================================================
+   Coming Soon Label
+   ============================================================ */
+
+.work-coming-soon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  letter-spacing: 0.03em;
+}
+
 /* Feature icons removed — replaced by feature-scene mini-animations */
 
 /* Process step icons — replaced by rich scene animations */
@@ -3842,6 +4161,9 @@ body:hover .cursor-glow {
 
 .work-card.reveal:nth-child(2) { transition-delay: 0.1s; }
 .work-card.reveal:nth-child(3) { transition-delay: 0.2s; }
+.work-card.reveal:nth-child(4) { transition-delay: 0s; }
+.work-card.reveal:nth-child(5) { transition-delay: 0.1s; }
+.work-card.reveal:nth-child(6) { transition-delay: 0.2s; }
 
 .pillar.reveal:nth-child(2) { transition-delay: 0.08s; }
 .pillar.reveal:nth-child(3) { transition-delay: 0.16s; }
