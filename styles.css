@@ -654,6 +654,66 @@ body:hover .cursor-glow {
 }
 
 /* ============================================================
+   Strategies Section
+   ============================================================ */
+
+.section-strategies {
+  padding: var(--section-padding) 0;
+}
+
+.strategies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 900px) {
+  .strategies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .strategies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.strategy-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.strategy-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.strategy-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.strategy-hook {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--accent-1);
+  margin-bottom: 1rem;
+}
+
+.strategy-body {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ============================================================
    Process Section
    ============================================================ */
 
