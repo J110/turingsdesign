@@ -592,17 +592,17 @@ body:hover .cursor-glow {
    ============================================================ */
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .about-text .text-large {
   font-size: 1.2rem;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   color: var(--text-primary);
+  max-width: 720px;
 }
 
 .about-text p {
@@ -616,9 +616,9 @@ body:hover .cursor-glow {
 }
 
 .about-features {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .feature-card {
@@ -4884,9 +4884,9 @@ body:hover .cursor-glow {
    ============================================================ */
 
 @media (max-width: 1024px) {
-  .about-grid {
+  .about-features {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 20px;
   }
 
   .philosophy-pillars {
