@@ -78,7 +78,7 @@
   revealElements.forEach((el) => revealObserver.observe(el));
 
   // ── Counter Animation ────────────────────────────────────
-  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  const statNumbers = document.querySelectorAll('.stat-number[data-target], .problem-number[data-target]');
 
   const counterObserver = new IntersectionObserver(
     (entries) => {
