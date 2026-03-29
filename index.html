@@ -331,22 +331,18 @@
           </div>
           <div class="feature-card reveal">
             <div class="feature-scene scene-scratch">
-              <!-- Product being born from nothing -->
-              <div class="scratch-birth">
-                <div class="scratch-canvas">
-                  <div class="sc-header"></div>
-                  <div class="sc-content">
-                    <div class="sc-block sc-block-1"></div>
-                    <div class="sc-block sc-block-2"></div>
-                    <div class="sc-block sc-block-3"></div>
-                  </div>
-                  <div class="sc-progress-ring">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                      <circle cx="12" cy="12" r="9" fill="none" stroke="rgba(124,92,255,0.1)" stroke-width="2"/>
-                      <circle class="sc-ring-fill" cx="12" cy="12" r="9" fill="none" stroke="rgba(124,92,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-dasharray="56.5" stroke-dashoffset="56.5" transform="rotate(-90 12 12)"/>
-                    </svg>
-                  </div>
-                  <div class="sc-notif-dot"></div>
+              <!-- 4 blocks assemble into a phone screen -->
+              <div class="scratch-assembly">
+                <div class="scratch-piece sp-1"></div>
+                <div class="scratch-piece sp-2"></div>
+                <div class="scratch-piece sp-3"></div>
+                <div class="scratch-piece sp-4"></div>
+                <div class="scratch-screen">
+                  <div class="scratch-screen-glow"></div>
+                  <svg class="scratch-progress-arc" viewBox="0 0 20 20" width="14" height="14">
+                    <circle cx="10" cy="10" r="7" fill="none" stroke="rgba(124,92,255,0.15)" stroke-width="2"/>
+                    <circle class="scratch-arc-fill" cx="10" cy="10" r="7" fill="none" stroke="rgba(124,92,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-dasharray="44" stroke-dashoffset="44" transform="rotate(-90 10 10)"/>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -396,26 +392,20 @@
       <div class="approach-grid">
         <div class="approach-card reveal">
           <div class="approach-scene approach-scene-ai">
-            <!-- Neural node with data streams -->
-            <div class="ai-neural">
-              <div class="ai-stream ai-stream-in ai-sin-1"></div>
-              <div class="ai-stream ai-stream-in ai-sin-2"></div>
-              <div class="ai-stream ai-stream-in ai-sin-3"></div>
-              <div class="ai-stream ai-stream-in ai-sin-4"></div>
-              <div class="ai-core">
-                <div class="ai-core-inner"></div>
-                <div class="ai-core-ring"></div>
-              </div>
-              <div class="ai-stream ai-stream-out ai-sout-1"></div>
-              <div class="ai-stream ai-stream-out ai-sout-2"></div>
-              <div class="ai-stream ai-stream-out ai-sout-3"></div>
-              <div class="ai-stream ai-stream-out ai-sout-4"></div>
-              <div class="ai-particle ap-1"></div>
-              <div class="ai-particle ap-2"></div>
-              <div class="ai-particle ap-3"></div>
-              <div class="ai-particle ap-4"></div>
-              <div class="ai-particle ap-5"></div>
-              <div class="ai-particle ap-6"></div>
+            <!-- AI engine: core orb, orbital rings, particles spiraling in/out -->
+            <div class="ai-engine">
+              <div class="ai-core"></div>
+              <div class="ai-core-pulse"></div>
+              <div class="ai-orbit ai-orbit-1"></div>
+              <div class="ai-orbit ai-orbit-2"></div>
+              <div class="ai-particle-in apin-1"></div>
+              <div class="ai-particle-in apin-2"></div>
+              <div class="ai-particle-in apin-3"></div>
+              <div class="ai-particle-in apin-4"></div>
+              <div class="ai-particle-in apin-5"></div>
+              <div class="ai-particle-out apout-1"></div>
+              <div class="ai-particle-out apout-2"></div>
+              <div class="ai-particle-out apout-3"></div>
             </div>
           </div>
           <h3>AI-First Approach</h3>
@@ -423,20 +413,20 @@
         </div>
         <div class="approach-card reveal">
           <div class="approach-scene approach-scene-behavioral">
-            <!-- Chaotic wave → filter → smooth wave -->
-            <div class="behav-signal">
-              <svg class="behav-wave-svg" viewBox="0 0 240 100" preserveAspectRatio="none">
-                <!-- Chaotic input wave -->
-                <path class="behav-chaotic" d="M0,50 Q10,20 20,55 T40,30 T60,65 T80,25 T100,58 T120,35" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"/>
-                <!-- Filter/processor element -->
-                <rect class="behav-filter" x="108" y="30" width="24" height="40" rx="4" fill="rgba(0,212,170,0.08)" stroke="rgba(0,212,170,0.35)" stroke-width="1"/>
-                <line class="behav-filter-line bf-l1" x1="112" y1="42" x2="128" y2="42" stroke="rgba(0,212,170,0.25)" stroke-width="1"/>
-                <line class="behav-filter-line bf-l2" x1="112" y1="50" x2="128" y2="50" stroke="rgba(0,212,170,0.25)" stroke-width="1"/>
-                <line class="behav-filter-line bf-l3" x1="112" y1="58" x2="128" y2="58" stroke="rgba(0,212,170,0.25)" stroke-width="1"/>
-                <!-- Smooth output wave -->
-                <path class="behav-smooth" d="M132,50 Q147,30 162,50 T192,50 T222,50 T240,50" fill="none" stroke="rgba(0,212,170,0.6)" stroke-width="1.5"/>
+            <!-- Circuit of interconnected nodes with traveling signals -->
+            <div class="behav-circuit">
+              <div class="behav-node bn-top"></div>
+              <div class="behav-node bn-right"></div>
+              <div class="behav-node bn-bottom"></div>
+              <div class="behav-node bn-left"></div>
+              <svg class="behav-paths" viewBox="0 0 120 120" width="120" height="120">
+                <line x1="60" y1="16" x2="104" y2="60" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+                <line x1="104" y1="60" x2="60" y2="104" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+                <line x1="60" y1="104" x2="16" y2="60" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+                <line x1="16" y1="60" x2="60" y2="16" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
               </svg>
-              <div class="behav-scan-line"></div>
+              <div class="behav-signal bs-1"></div>
+              <div class="behav-signal bs-2"></div>
             </div>
           </div>
           <h3>Behavioral Algorithms</h3>
@@ -444,12 +434,12 @@
         </div>
         <div class="approach-card reveal">
           <div class="approach-scene approach-scene-design">
-            <!-- Three translucent panels with depth -->
-            <div class="design-layers">
-              <div class="dl-panel dl-panel-1"></div>
-              <div class="dl-panel dl-panel-2"></div>
-              <div class="dl-panel dl-panel-3"></div>
-              <div class="dl-light"></div>
+            <!-- Three translucent layers aligning and glowing -->
+            <div class="design-stack">
+              <div class="design-pane dp-1"></div>
+              <div class="design-pane dp-2"></div>
+              <div class="design-pane dp-3"></div>
+              <div class="design-unity-glow"></div>
             </div>
           </div>
           <h3>Design Language</h3>
