@@ -5339,220 +5339,322 @@ body:hover .cursor-glow {
   justify-content: center;
 }
 
-/* AI Card scene */
+/* ── AI-First — Diagnose → Generate → Ship pipeline ── */
+
 .approach-scene-ai {
   background: linear-gradient(135deg, rgba(124,92,255,0.08) 0%, rgba(124,92,255,0.02) 100%);
+  flex-direction: column;
+  gap: 10px;
 }
 
-.approach-orb {
-  width: 40px;
-  height: 40px;
+.ai-pipeline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ai-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  animation: stageAppear 5s ease infinite;
+}
+
+.ai-diagnose { animation-delay: 0s; }
+.ai-generate { animation-delay: 0.8s; }
+.ai-ship { animation-delay: 1.6s; }
+
+.ai-stage-label {
+  font-family: var(--font-heading);
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: rgba(124,92,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ai-stage-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.asd {
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,92,255,0.6), rgba(124,92,255,0.1));
-  box-shadow: 0 0 30px rgba(124,92,255,0.3);
-  animation: orbPulse 3s ease-in-out infinite;
+  background: rgba(124,92,255,0.4);
+  animation: dotPulse 1.5s ease infinite;
 }
 
-@keyframes orbPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(124,92,255,0.3); }
-  50% { transform: scale(1.15); box-shadow: 0 0 50px rgba(124,92,255,0.5); }
+.asd-1 { animation-delay: 0s; }
+.asd-2 { animation-delay: 0.2s; }
+.asd-3 { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; background: var(--accent-1); }
 }
 
-.approach-ring {
+@keyframes stageAppear {
+  0% { opacity: 0; transform: translateY(8px); }
+  15% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 1; }
+  85% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+
+.ai-flow-arrow {
+  width: 16px;
+  height: 1px;
+  background: rgba(124,92,255,0.25);
+  position: relative;
+  animation: arrowFade 5s ease infinite;
+}
+
+.afa-1 { animation-delay: 0.5s; }
+.afa-2 { animation-delay: 1.3s; }
+
+.ai-flow-arrow::after {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  border: 1px solid rgba(124,92,255,0.15);
-  transform: translate(-50%, -50%);
-  animation: ringExpand 4s ease-out infinite;
+  right: -1px;
+  top: -2.5px;
+  border-left: 4px solid rgba(124,92,255,0.35);
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
 }
 
-.ar-1 { width: 70px; height: 70px; animation-delay: 0s; }
-.ar-2 { width: 100px; height: 100px; animation-delay: 1.3s; }
-.ar-3 { width: 130px; height: 130px; animation-delay: 2.6s; }
-
-@keyframes ringExpand {
-  0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.8); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+@keyframes arrowFade {
+  0%, 5% { opacity: 0; }
+  20% { opacity: 1; }
+  70% { opacity: 1; }
+  85% { opacity: 0; }
+  100% { opacity: 0; }
 }
 
-.approach-pulse {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-1);
-  animation: approachFloat 5s ease-in-out infinite;
+.ai-speed-badge {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--accent-1);
+  background: rgba(124,92,255,0.1);
+  border: 1px solid rgba(124,92,255,0.2);
+  padding: 2px 10px;
+  border-radius: 10px;
+  opacity: 0;
+  animation: badgePop 5s ease infinite 2.2s;
 }
 
-.ap-1 { top: 25%; left: 20%; animation-delay: 0s; }
-.ap-2 { bottom: 30%; right: 25%; animation-delay: 2.5s; }
-
-.approach-data {
-  position: absolute;
-  width: 20px;
-  height: 2px;
-  background: rgba(124,92,255,0.3);
-  border-radius: 1px;
-  animation: dataStream 3s ease-in-out infinite;
+@keyframes badgePop {
+  0%, 5% { opacity: 0; transform: scale(0.7); }
+  15% { opacity: 1; transform: scale(1.1); }
+  25% { opacity: 1; transform: scale(1); }
+  55% { opacity: 1; }
+  70%, 100% { opacity: 0; }
 }
 
-.ad-1 { top: 30%; right: 20%; animation-delay: 0s; }
-.ad-2 { top: 50%; right: 15%; width: 14px; animation-delay: 0.8s; }
-.ad-3 { top: 70%; right: 22%; width: 18px; animation-delay: 1.6s; }
+/* ── Behavioral Algorithms — Trigger → Action → Reward → Habit loop ── */
 
-@keyframes dataStream {
-  0%, 100% { opacity: 0.3; transform: translateX(0); }
-  50% { opacity: 0.8; transform: translateX(-8px); }
-}
-
-@keyframes approachFloat {
-  0%, 100% { transform: translateY(0); opacity: 0.5; }
-  50% { transform: translateY(-12px); opacity: 1; }
-}
-
-/* Behavioral Card scene */
 .approach-scene-behavioral {
   background: linear-gradient(135deg, rgba(0,212,170,0.08) 0%, rgba(0,212,170,0.02) 100%);
 }
 
-.approach-brain {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,212,170,0.5), rgba(0,212,170,0.1));
-  box-shadow: 0 0 25px rgba(0,212,170,0.2);
-  animation: brainPulse 4s ease-in-out infinite;
+.behavior-loop {
+  position: relative;
+  width: 120px;
+  height: 120px;
 }
 
-@keyframes brainPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.approach-synapse {
+.loop-circle {
   position: absolute;
-  width: 1px;
-  background: linear-gradient(to bottom, rgba(0,212,170,0.4), transparent);
-  animation: synapseFire 3s ease-in-out infinite;
+  top: 0;
+  left: 0;
 }
 
-.as-1 { height: 30px; top: 15%; left: 35%; animation-delay: 0s; transform: rotate(30deg); }
-.as-2 { height: 25px; top: 20%; right: 30%; animation-delay: 0.6s; transform: rotate(-20deg); }
-.as-3 { height: 35px; bottom: 20%; left: 25%; animation-delay: 1.2s; transform: rotate(-40deg); }
-.as-4 { height: 28px; bottom: 25%; right: 35%; animation-delay: 1.8s; transform: rotate(15deg); }
-.as-5 { height: 22px; top: 40%; left: 18%; animation-delay: 2.4s; transform: rotate(50deg); }
-
-@keyframes synapseFire {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.8; }
+.loop-progress {
+  animation: loopDraw 4s ease infinite;
 }
 
-.approach-neuron {
+@keyframes loopDraw {
+  0% { stroke-dashoffset: 289; }
+  60% { stroke-dashoffset: 0; }
+  80% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 289; }
+}
+
+.loop-node {
   position: absolute;
-  width: 5px;
-  height: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  animation: nodeLight 4s ease infinite;
+}
+
+.ln-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--accent-2);
-  animation: neuronGlow 2.5s ease-in-out infinite;
+  background: rgba(0,212,170,0.15);
+  border: 1.5px solid rgba(0,212,170,0.4);
+  transition: all 0.3s;
 }
 
-.an-1 { top: 25%; left: 30%; animation-delay: 0s; }
-.an-2 { top: 35%; right: 28%; animation-delay: 0.7s; }
-.an-3 { bottom: 30%; left: 35%; animation-delay: 1.4s; }
-.an-4 { bottom: 25%; right: 32%; animation-delay: 2.1s; }
-
-@keyframes neuronGlow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 10px rgba(0,212,170,0.5); }
+.ln-label {
+  font-family: var(--font-heading);
+  font-size: 0.45rem;
+  font-weight: 600;
+  color: rgba(0,212,170,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-/* Design Card scene */
+.ln-trigger { top: -4px; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+.ln-action { top: 50%; right: -8px; transform: translateY(-50%); animation-delay: 1s; }
+.ln-reward { bottom: -4px; left: 50%; transform: translateX(-50%); animation-delay: 2s; }
+.ln-habit { top: 50%; left: -4px; transform: translateY(-50%); animation-delay: 3s; }
+
+@keyframes nodeLight {
+  0%, 15% { opacity: 0.4; }
+  25% { opacity: 1; }
+  35% { opacity: 1; }
+  50%, 100% { opacity: 0.4; }
+}
+
+.loop-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,170,0.4), transparent);
+  transform: translate(-50%, -50%);
+  animation: loopCenterPulse 4s ease infinite;
+}
+
+@keyframes loopCenterPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  60% { transform: translate(-50%, -50%) scale(2.5); opacity: 0.8; }
+  80% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }
+}
+
+/* ── Design Language — Three streams merging into seamless experience ── */
+
 .approach-scene-design {
   background: linear-gradient(135deg, rgba(255,107,157,0.08) 0%, rgba(255,107,157,0.02) 100%);
+  gap: 8px;
 }
 
-.approach-layers {
+.merge-streams {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.merge-stream {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: streamFlow 5s ease infinite;
+}
+
+.ms-tech { animation-delay: 0s; }
+.ms-psych { animation-delay: 0.4s; }
+.ms-design { animation-delay: 0.8s; }
+
+.ms-icon {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.ms-line {
+  width: 20px;
+  height: 1.5px;
+  border-radius: 1px;
+}
+
+.ms-tech .ms-line { background: rgba(124,92,255,0.4); }
+.ms-psych .ms-line { background: rgba(0,212,170,0.4); }
+.ms-design .ms-line { background: rgba(255,107,157,0.4); }
+
+@keyframes streamFlow {
+  0% { opacity: 0; transform: translateX(-12px); }
+  20% { opacity: 1; transform: translateX(0); }
+  70% { opacity: 1; }
+  90%, 100% { opacity: 0.3; }
+}
+
+.merge-point {
   position: relative;
-  width: 80px;
-  height: 80px;
-  transform-style: preserve-3d;
-  perspective: 300px;
-  animation: layerFloat 6s ease-in-out infinite;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes layerFloat {
-  0%, 100% { transform: rotateX(15deg) rotateY(0deg); }
-  50% { transform: rotateX(15deg) rotateY(10deg); }
-}
-
-.approach-layer {
-  position: absolute;
-  width: 60px;
-  height: 40px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,107,157,0.2);
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.al-1 {
-  top: 0;
-  background: rgba(255,107,157,0.12);
-  animation: layerBreathe 3s ease-in-out infinite;
-}
-
-.al-2 {
-  top: 16px;
-  background: rgba(255,107,157,0.08);
-  width: 54px;
-  animation: layerBreathe 3s ease-in-out infinite 0.5s;
-}
-
-.al-3 {
-  top: 32px;
-  background: rgba(255,107,157,0.04);
-  width: 48px;
-  animation: layerBreathe 3s ease-in-out infinite 1s;
-}
-
-@keyframes layerBreathe {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-.approach-sparkle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
+.merge-glow {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--accent-3);
-  animation: sparkleFlash 2s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255,107,157,0.6), rgba(124,92,255,0.3), rgba(0,212,170,0.2));
+  animation: mergeGlowPulse 5s ease infinite 1s;
 }
 
-.asp-1 { top: 20%; right: 25%; animation-delay: 0s; }
-.asp-2 { bottom: 25%; left: 20%; animation-delay: 0.7s; }
-.asp-3 { top: 40%; left: 30%; animation-delay: 1.4s; }
-
-@keyframes sparkleFlash {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1.5); }
+@keyframes mergeGlowPulse {
+  0%, 10% { transform: scale(0.5); opacity: 0; }
+  25% { transform: scale(1.3); opacity: 1; }
+  40% { transform: scale(1); opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { opacity: 0; }
 }
 
-.approach-shimmer {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,107,157,0.05), transparent);
-  animation: shimmerSlide 5s ease-in-out infinite;
+.merge-output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: outputReveal 5s ease infinite 1.5s;
 }
 
-@keyframes shimmerSlide {
-  0% { left: -50%; }
-  100% { left: 150%; }
+.merge-experience {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.exp-wave {
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(to top, rgba(255,107,157,0.4), rgba(124,92,255,0.3));
+}
+
+.ew-1 { height: 10px; animation: waveMove 1.5s ease-in-out infinite; }
+.ew-2 { height: 16px; animation: waveMove 1.5s ease-in-out infinite 0.3s; }
+.ew-3 { height: 8px; animation: waveMove 1.5s ease-in-out infinite 0.6s; }
+
+@keyframes waveMove {
+  0%, 100% { height: 8px; }
+  50% { height: 16px; }
+}
+
+.merge-feels {
+  font-family: var(--font-heading);
+  font-size: 0.45rem;
+  font-weight: 600;
+  color: rgba(255,107,157,0.6);
+  letter-spacing: 0.04em;
+}
+
+@keyframes outputReveal {
+  0%, 10% { opacity: 0; transform: translateX(8px); }
+  25% { opacity: 1; transform: translateX(0); }
+  75% { opacity: 1; }
+  90%, 100% { opacity: 0; }
 }
 
 @media (max-width: 768px) {
