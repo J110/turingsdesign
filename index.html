@@ -331,27 +331,24 @@
           </div>
           <div class="feature-card reveal">
             <div class="feature-scene scene-scratch">
-              <!-- Building blocks assembling into a product -->
-              <div class="scratch-block sb-research">
-                <div class="sb-shape sb-circle"></div>
-              </div>
-              <div class="scratch-block sb-algo">
-                <div class="sb-shape sb-diamond"></div>
-              </div>
-              <div class="scratch-block sb-design">
-                <div class="sb-shape sb-triangle"></div>
-              </div>
-              <div class="scratch-block sb-ship">
-                <div class="sb-shape sb-square"></div>
-              </div>
-              <!-- Final product -->
-              <div class="scratch-product">
-                <div class="scratch-phone">
-                  <div class="scratch-phone-screen"></div>
+              <!-- Product being born from nothing -->
+              <div class="scratch-birth">
+                <div class="scratch-canvas">
+                  <div class="sc-header"></div>
+                  <div class="sc-content">
+                    <div class="sc-block sc-block-1"></div>
+                    <div class="sc-block sc-block-2"></div>
+                    <div class="sc-block sc-block-3"></div>
+                  </div>
+                  <div class="sc-progress-ring">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                      <circle cx="12" cy="12" r="9" fill="none" stroke="rgba(124,92,255,0.1)" stroke-width="2"/>
+                      <circle class="sc-ring-fill" cx="12" cy="12" r="9" fill="none" stroke="rgba(124,92,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-dasharray="56.5" stroke-dashoffset="56.5" transform="rotate(-90 12 12)"/>
+                    </svg>
+                  </div>
+                  <div class="sc-notif-dot"></div>
                 </div>
               </div>
-              <!-- Arrow flow -->
-              <div class="scratch-arrow"></div>
             </div>
             <h3>Gamified Products from Scratch</h3>
             <p>An idea that needs gamification at its core, not bolted on. We design and build complete products — from behavioral research to app store — where the game mechanics and the intended outcome are inseparable. AI accelerates every stage.</p>
@@ -399,57 +396,47 @@
       <div class="approach-grid">
         <div class="approach-card reveal">
           <div class="approach-scene approach-scene-ai">
-            <!-- AI pipeline: diagnose → generate → ship -->
-            <div class="ai-pipeline">
-              <div class="ai-stage ai-diagnose">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(124,92,255,0.6)" stroke-width="1.5">
-                  <circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/>
-                </svg>
-                <div class="ai-stage-dots">
-                  <span class="asd asd-1"></span>
-                  <span class="asd asd-2"></span>
-                  <span class="asd asd-3"></span>
-                </div>
+            <!-- Neural node with data streams -->
+            <div class="ai-neural">
+              <div class="ai-stream ai-stream-in ai-sin-1"></div>
+              <div class="ai-stream ai-stream-in ai-sin-2"></div>
+              <div class="ai-stream ai-stream-in ai-sin-3"></div>
+              <div class="ai-stream ai-stream-in ai-sin-4"></div>
+              <div class="ai-core">
+                <div class="ai-core-inner"></div>
+                <div class="ai-core-ring"></div>
               </div>
-              <div class="ai-flow-arrow afa-1"></div>
-              <div class="ai-stage ai-generate">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(124,92,255,0.6)" stroke-width="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <div class="ai-flow-arrow afa-2"></div>
-              <div class="ai-stage ai-ship">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(124,92,255,0.6)" stroke-width="1.5">
-                  <path d="M5 12l5 5L20 7"/>
-                </svg>
-              </div>
+              <div class="ai-stream ai-stream-out ai-sout-1"></div>
+              <div class="ai-stream ai-stream-out ai-sout-2"></div>
+              <div class="ai-stream ai-stream-out ai-sout-3"></div>
+              <div class="ai-stream ai-stream-out ai-sout-4"></div>
+              <div class="ai-particle ap-1"></div>
+              <div class="ai-particle ap-2"></div>
+              <div class="ai-particle ap-3"></div>
+              <div class="ai-particle ap-4"></div>
+              <div class="ai-particle ap-5"></div>
+              <div class="ai-particle ap-6"></div>
             </div>
-            <div class="ai-pulse-dot"></div>
           </div>
           <h3>AI-First Approach</h3>
           <p>AI gives us an infinite canvas &mdash; to diagnose behavioral patterns, generate adaptive content, modulate voice in real-time, and ship full products in 14 days. AI isn't a feature we add. It's how we think, build, and iterate.</p>
         </div>
         <div class="approach-card reveal">
           <div class="approach-scene approach-scene-behavioral">
-            <!-- Behavioral loop: trigger → action → reward → habit -->
-            <div class="behavior-loop">
-              <svg class="loop-circle" viewBox="0 0 120 120" width="120" height="120">
-                <circle cx="60" cy="60" r="46" fill="none" stroke="rgba(0,212,170,0.1)" stroke-width="1.5"/>
-                <circle class="loop-progress" cx="60" cy="60" r="46" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289" transform="rotate(-90 60 60)"/>
+            <!-- Chaotic wave → filter → smooth wave -->
+            <div class="behav-signal">
+              <svg class="behav-wave-svg" viewBox="0 0 240 100" preserveAspectRatio="none">
+                <!-- Chaotic input wave -->
+                <path class="behav-chaotic" d="M0,50 Q10,20 20,55 T40,30 T60,65 T80,25 T100,58 T120,35" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="1.5"/>
+                <!-- Filter/processor element -->
+                <rect class="behav-filter" x="108" y="30" width="24" height="40" rx="4" fill="rgba(0,212,170,0.08)" stroke="rgba(0,212,170,0.35)" stroke-width="1"/>
+                <line class="behav-filter-line bf-l1" x1="112" y1="42" x2="128" y2="42" stroke="rgba(0,212,170,0.25)" stroke-width="1"/>
+                <line class="behav-filter-line bf-l2" x1="112" y1="50" x2="128" y2="50" stroke="rgba(0,212,170,0.25)" stroke-width="1"/>
+                <line class="behav-filter-line bf-l3" x1="112" y1="58" x2="128" y2="58" stroke="rgba(0,212,170,0.25)" stroke-width="1"/>
+                <!-- Smooth output wave -->
+                <path class="behav-smooth" d="M132,50 Q147,30 162,50 T192,50 T222,50 T240,50" fill="none" stroke="rgba(0,212,170,0.6)" stroke-width="1.5"/>
               </svg>
-              <div class="loop-node ln-trigger">
-                <span class="ln-dot"></span>
-              </div>
-              <div class="loop-node ln-action">
-                <span class="ln-dot"></span>
-              </div>
-              <div class="loop-node ln-reward">
-                <span class="ln-dot"></span>
-              </div>
-              <div class="loop-node ln-habit">
-                <span class="ln-dot"></span>
-              </div>
-              <div class="loop-pulse"></div>
+              <div class="behav-scan-line"></div>
             </div>
           </div>
           <h3>Behavioral Algorithms</h3>
@@ -457,33 +444,12 @@
         </div>
         <div class="approach-card reveal">
           <div class="approach-scene approach-scene-design">
-            <!-- Three merging streams: tech + psychology + design -->
-            <div class="merge-streams">
-              <div class="merge-stream ms-tech">
-                <span class="ms-dot" style="background:rgba(124,92,255,0.5);"></span>
-                <span class="ms-line"></span>
-              </div>
-              <div class="merge-stream ms-psych">
-                <span class="ms-dot" style="background:rgba(0,212,170,0.5);"></span>
-                <span class="ms-line"></span>
-              </div>
-              <div class="merge-stream ms-design">
-                <span class="ms-dot" style="background:rgba(255,107,157,0.5);"></span>
-                <span class="ms-line"></span>
-              </div>
-            </div>
-            <!-- Merge point -->
-            <div class="merge-point">
-              <div class="merge-glow"></div>
-            </div>
-            <!-- Output: seamless experience -->
-            <div class="merge-output">
-              <div class="merge-experience">
-                <div class="exp-wave ew-1"></div>
-                <div class="exp-wave ew-2"></div>
-                <div class="exp-wave ew-3"></div>
-              </div>
-              <div class="merge-pulse-out"></div>
+            <!-- Three translucent panels with depth -->
+            <div class="design-layers">
+              <div class="dl-panel dl-panel-1"></div>
+              <div class="dl-panel dl-panel-2"></div>
+              <div class="dl-panel dl-panel-3"></div>
+              <div class="dl-light"></div>
             </div>
           </div>
           <h3>Design Language</h3>
