@@ -196,6 +196,350 @@
       border-color: rgba(255,255,255,0.4);
     }
 
+    /* ── Card 1: Human First — person with heartbeat ── */
+    .phil-scene-human {
+      background: linear-gradient(135deg, rgba(124,92,255,0.06) 0%, rgba(124,92,255,0.01) 100%);
+      gap: 16px;
+    }
+    .phil-person { opacity: 0.7; }
+    .phil-heartbeat { animation: heartbeatDraw 3s ease infinite; }
+    .heartbeat-line {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: heartDraw 3s ease infinite;
+    }
+    @keyframes heartDraw {
+      0% { stroke-dashoffset: 200; }
+      50% { stroke-dashoffset: 0; }
+      80% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 0.3; }
+    }
+    .phil-focus-ring {
+      position: absolute;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(124,92,255,0.2);
+      left: 22%; top: 50%;
+      transform: translate(-50%, -50%);
+      animation: focusRingPulse 4s ease infinite;
+    }
+    @keyframes focusRingPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+      50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+    }
+
+    /* ── Card 2: Ethics — shield check vs X ── */
+    .phil-scene-ethics {
+      background: linear-gradient(135deg, rgba(0,212,170,0.06) 0%, rgba(0,212,170,0.01) 100%);
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ethics-split {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .ethics-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .ethics-good { animation: ethicsPulse 4s ease infinite; }
+    .ethics-bad { opacity: 0.4; }
+    .ethics-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .el-good { color: rgba(0,212,170,0.7); }
+    .el-bad { color: rgba(255,107,157,0.5); text-decoration: line-through; }
+    .ethics-divider {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent);
+    }
+    .ethics-line-sharp {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(0,212,170,0.4), rgba(255,107,157,0.4));
+      border-radius: 1px;
+    }
+    @keyframes ethicsPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* ── Card 3: Impact — outcome meter ── */
+    .phil-scene-impact {
+      background: linear-gradient(135deg, rgba(255,107,157,0.06) 0%, rgba(255,107,157,0.01) 100%);
+      flex-direction: column;
+      gap: 10px;
+    }
+    .impact-meter {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .impact-labels {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    .impact-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.45rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.35);
+      line-height: 12px;
+    }
+    .il-outcome { color: rgba(255,107,157,0.7); }
+    .impact-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .impact-bar {
+      height: 8px;
+      border-radius: 4px;
+      animation: barGrow 4s ease infinite;
+    }
+    .ib-downloads {
+      background: rgba(255,255,255,0.08);
+      animation-delay: 0s;
+    }
+    .ib-dau {
+      background: rgba(255,255,255,0.08);
+      animation-delay: 0.3s;
+    }
+    .ib-outcome {
+      background: linear-gradient(90deg, rgba(255,107,157,0.3), rgba(255,107,157,0.6));
+      animation-delay: 0.6s;
+    }
+    @keyframes barGrow {
+      0% { width: 0; }
+      20% { width: 40px; }
+      40% { width: 60px; }
+      100% { width: 60px; opacity: 0.6; }
+    }
+    .impact-check {
+      font-size: 0.8rem;
+      color: var(--accent-3);
+      opacity: 0;
+      animation: impactCheckPop 4s ease infinite 1.5s;
+    }
+    @keyframes impactCheckPop {
+      0%, 5% { opacity: 0; transform: scale(0); }
+      20% { opacity: 1; transform: scale(1.3); }
+      35% { transform: scale(1); opacity: 1; }
+      70% { opacity: 1; }
+      85%, 100% { opacity: 0; }
+    }
+
+    /* ── Card 4: Beyond — Two worlds meeting ── */
+    .phil-scene-beyond {
+      background: linear-gradient(135deg, rgba(124,92,255,0.06) 0%, rgba(124,92,255,0.01) 100%);
+      gap: 6px;
+    }
+    .beyond-world {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      animation: beyondFade 5s ease infinite;
+    }
+    .bw-academia { animation-delay: 0s; }
+    .bw-corporate { animation-delay: 0.5s; }
+    .beyond-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.45rem;
+      font-weight: 600;
+      color: rgba(124,92,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .beyond-bridge {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .beyond-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(124,92,255,0.3);
+      animation: bridgeDotFlow 3s ease infinite;
+    }
+    .bbd-1, .bbd-4 { animation-delay: 0s; }
+    .bbd-2, .bbd-5 { animation-delay: 0.3s; }
+    .bbd-3, .bbd-6 { animation-delay: 0.6s; }
+    @keyframes bridgeDotFlow {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; background: var(--accent-1); }
+    }
+    .beyond-center {
+      width: 20px; height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .beyond-glow {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,92,255,0.5), rgba(0,212,170,0.3));
+      animation: beyondGlowPulse 3s ease infinite;
+    }
+    @keyframes beyondGlowPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(124,92,255,0.2); }
+      50% { transform: scale(1.4); box-shadow: 0 0 25px rgba(124,92,255,0.4); }
+    }
+    @keyframes beyondFade {
+      0%, 10% { opacity: 0.3; transform: translateX(0); }
+      30% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    /* ── Card 5: Conscious Capitalism — Four pillars ── */
+    .phil-scene-conscious {
+      background: linear-gradient(135deg, rgba(0,212,170,0.06) 0%, rgba(0,212,170,0.01) 100%);
+      flex-direction: column;
+      gap: 8px;
+    }
+    .conscious-pillars {
+      display: flex;
+      gap: 14px;
+      align-items: flex-end;
+    }
+    .conscious-pillar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .cp-bar {
+      width: 16px;
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(to top, rgba(0,212,170,0.15), rgba(0,212,170,0.4));
+      animation: pillarRise 4s ease infinite;
+    }
+    .cp-1 .cp-bar { animation-delay: 0s; }
+    .cp-2 .cp-bar { animation-delay: 0.3s; }
+    .cp-3 .cp-bar { animation-delay: 0.6s; }
+    .cp-4 .cp-bar { animation-delay: 0.9s; }
+    .cp-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.4rem;
+      font-weight: 600;
+      color: rgba(0,212,170,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    @keyframes pillarRise {
+      0% { height: 0; opacity: 0; }
+      25% { height: 40px; opacity: 1; }
+      70% { height: 40px; opacity: 1; }
+      100% { height: 40px; opacity: 0.3; }
+    }
+    .conscious-rise {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,212,170,0.3), transparent);
+    }
+
+    /* ── Card 6: Infinite Games — infinity loop + lab ── */
+    .phil-scene-infinite {
+      background: linear-gradient(135deg, rgba(255,107,157,0.06) 0%, rgba(255,107,157,0.01) 100%);
+    }
+    .infinite-visual {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .finite-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.4;
+    }
+    .finite-label, .infinite-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .finite-label { color: rgba(255,107,157,0.4); }
+    .infinite-label { color: rgba(255,107,157,0.7); }
+    .infinite-loop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .infinity-path {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: infinityDraw 4s ease infinite;
+    }
+    @keyframes infinityDraw {
+      0% { stroke-dashoffset: 200; }
+      50% { stroke-dashoffset: 0; }
+      80% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 200; }
+    }
+    .infinite-products {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .inf-prod {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,107,157,0.3);
+      animation: prodPop 5s ease infinite;
+    }
+    .ip-1 { animation-delay: 0s; }
+    .ip-2 { animation-delay: 0.5s; }
+    .ip-3 { animation-delay: 1s; background: rgba(255,107,157,0.5); }
+    .ip-4 { animation-delay: 1.5s; }
+    .ip-5 { animation-delay: 2s; }
+    @keyframes prodPop {
+      0% { transform: scale(0); opacity: 0; }
+      15% { transform: scale(1.3); opacity: 1; }
+      25% { transform: scale(1); opacity: 0.8; }
+      70% { opacity: 0.8; }
+      100% { opacity: 0.2; }
+    }
+    .lab-continues {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.45rem;
+      font-weight: 600;
+      color: rgba(255,107,157,0.5);
+      letter-spacing: 0.04em;
+      font-style: italic;
+      opacity: 0;
+      animation: labFadeIn 5s ease infinite 2.5s;
+    }
+    @keyframes labFadeIn {
+      0%, 5% { opacity: 0; }
+      20% { opacity: 0.7; }
+      60% { opacity: 0.7; }
+      80%, 100% { opacity: 0; }
+    }
+
     /* Responsive */
     @media (max-width: 700px) {
       .philosophy-cards {
@@ -253,14 +597,19 @@
     <!-- Philosophy Cards -->
     <div class="philosophy-cards">
 
-      <!-- Card 1: Human First, Always -->
+      <!-- Card 1: Human First, Always — Person silhouette with heartbeat -->
       <div class="philosophy-card">
-        <div class="philosophy-card-scene">
-          <div class="phil-float" style="width:8px;height:8px;background:var(--accent-1);top:20%;left:25%;animation-delay:0s;"></div>
-          <div class="phil-float" style="width:5px;height:5px;background:var(--accent-1);opacity:0.5;bottom:30%;right:20%;animation-delay:1s;"></div>
-          <div class="phil-float" style="width:6px;height:6px;background:var(--accent-1);opacity:0.3;top:40%;right:35%;animation-delay:2s;"></div>
-          <div class="phil-ring" style="width:60px;height:60px;border-color:rgba(124,92,255,0.15);top:50%;left:50%;"></div>
-          <div class="phil-ring" style="width:90px;height:90px;border-color:rgba(124,92,255,0.08);top:50%;left:50%;animation-delay:1.5s;"></div>
+        <div class="philosophy-card-scene phil-scene-human">
+          <svg class="phil-person" viewBox="0 0 40 80" width="32" height="64" fill="none">
+            <circle cx="20" cy="12" r="8" stroke="rgba(124,92,255,0.35)" stroke-width="1.2"/>
+            <path d="M8 35 C8 25 14 20 20 20 C26 20 32 25 32 35 L32 55 C32 58 30 60 27 60 L13 60 C10 60 8 58 8 55Z" stroke="rgba(124,92,255,0.25)" stroke-width="1" fill="rgba(124,92,255,0.04)"/>
+          </svg>
+          <div class="phil-heartbeat">
+            <svg viewBox="0 0 100 30" width="80" height="24" fill="none">
+              <polyline class="heartbeat-line" points="0,15 20,15 28,15 32,5 36,25 40,15 48,15 52,8 56,22 60,15 100,15" stroke="rgba(124,92,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="phil-focus-ring"></div>
         </div>
         <div class="philosophy-card-body">
           <h3>Human First, Always</h3>
@@ -268,14 +617,27 @@
         </div>
       </div>
 
-      <!-- Card 2: Design Without Manipulation -->
+      <!-- Card 2: Design Without Manipulation — Shield with checkmark vs X -->
       <div class="philosophy-card">
-        <div class="philosophy-card-scene">
-          <div class="phil-float" style="width:8px;height:8px;background:var(--accent-2);top:20%;left:25%;animation-delay:0s;"></div>
-          <div class="phil-float" style="width:5px;height:5px;background:var(--accent-2);opacity:0.5;bottom:30%;right:20%;animation-delay:1s;"></div>
-          <div class="phil-float" style="width:6px;height:6px;background:var(--accent-2);opacity:0.3;top:40%;right:35%;animation-delay:2s;"></div>
-          <div class="phil-ring" style="width:60px;height:60px;border-color:rgba(0,212,170,0.15);top:50%;left:50%;"></div>
-          <div class="phil-ring" style="width:90px;height:90px;border-color:rgba(0,212,170,0.08);top:50%;left:50%;animation-delay:1.5s;"></div>
+        <div class="philosophy-card-scene phil-scene-ethics">
+          <div class="ethics-split">
+            <div class="ethics-side ethics-good">
+              <svg viewBox="0 0 30 30" width="24" height="24" fill="none">
+                <path d="M15 3 L15 3 C10 3 5 7 5 13 L5 20 L15 27 L25 20 L25 13 C25 7 20 3 15 3Z" stroke="rgba(0,212,170,0.4)" stroke-width="1.2" fill="rgba(0,212,170,0.06)"/>
+                <path d="M11 15 L14 18 L20 12" stroke="rgba(0,212,170,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="ethics-label el-good">Design</span>
+            </div>
+            <div class="ethics-divider"></div>
+            <div class="ethics-side ethics-bad">
+              <svg viewBox="0 0 30 30" width="24" height="24" fill="none">
+                <path d="M15 3 L15 3 C10 3 5 7 5 13 L5 20 L15 27 L25 20 L25 13 C25 7 20 3 15 3Z" stroke="rgba(255,107,157,0.3)" stroke-width="1.2" fill="rgba(255,107,157,0.04)" stroke-dasharray="3 2"/>
+                <path d="M11 11 L19 19 M19 11 L11 19" stroke="rgba(255,107,157,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="ethics-label el-bad">Manipulation</span>
+            </div>
+          </div>
+          <div class="ethics-line-sharp"></div>
         </div>
         <div class="philosophy-card-body">
           <h3>Design Without Manipulation</h3>
@@ -283,14 +645,22 @@
         </div>
       </div>
 
-      <!-- Card 3: Real-World Impact -->
+      <!-- Card 3: Real-World Impact — Outcome meter -->
       <div class="philosophy-card">
-        <div class="philosophy-card-scene">
-          <div class="phil-float" style="width:8px;height:8px;background:var(--accent-3);top:20%;left:25%;animation-delay:0s;"></div>
-          <div class="phil-float" style="width:5px;height:5px;background:var(--accent-3);opacity:0.5;bottom:30%;right:20%;animation-delay:1s;"></div>
-          <div class="phil-float" style="width:6px;height:6px;background:var(--accent-3);opacity:0.3;top:40%;right:35%;animation-delay:2s;"></div>
-          <div class="phil-ring" style="width:60px;height:60px;border-color:rgba(255,107,157,0.15);top:50%;left:50%;"></div>
-          <div class="phil-ring" style="width:90px;height:90px;border-color:rgba(255,107,157,0.08);top:50%;left:50%;animation-delay:1.5s;"></div>
+        <div class="philosophy-card-scene phil-scene-impact">
+          <div class="impact-meter">
+            <div class="impact-labels">
+              <span class="impact-label il-downloads">Downloads</span>
+              <span class="impact-label il-dau">DAUs</span>
+              <span class="impact-label il-outcome">Behavior Changed</span>
+            </div>
+            <div class="impact-bars">
+              <div class="impact-bar ib-downloads"></div>
+              <div class="impact-bar ib-dau"></div>
+              <div class="impact-bar ib-outcome"></div>
+            </div>
+          </div>
+          <div class="impact-check">✓</div>
         </div>
         <div class="philosophy-card-body">
           <h3>Real-World Impact</h3>
@@ -298,14 +668,34 @@
         </div>
       </div>
 
-      <!-- Card 4: Beyond Academia and Corporate -->
+      <!-- Card 4: Beyond Academia and Corporate — Two worlds merging -->
       <div class="philosophy-card">
-        <div class="philosophy-card-scene">
-          <div class="phil-float" style="width:8px;height:8px;background:var(--accent-1);top:20%;left:25%;animation-delay:0s;"></div>
-          <div class="phil-float" style="width:5px;height:5px;background:var(--accent-1);opacity:0.5;bottom:30%;right:20%;animation-delay:1s;"></div>
-          <div class="phil-float" style="width:6px;height:6px;background:var(--accent-1);opacity:0.3;top:40%;right:35%;animation-delay:2s;"></div>
-          <div class="phil-ring" style="width:60px;height:60px;border-color:rgba(124,92,255,0.15);top:50%;left:50%;"></div>
-          <div class="phil-ring" style="width:90px;height:90px;border-color:rgba(124,92,255,0.08);top:50%;left:50%;animation-delay:1.5s;"></div>
+        <div class="philosophy-card-scene phil-scene-beyond">
+          <div class="beyond-world bw-academia">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="1.3">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/>
+            </svg>
+            <span class="beyond-label">Research</span>
+          </div>
+          <div class="beyond-bridge">
+            <span class="beyond-dot bbd-1"></span>
+            <span class="beyond-dot bbd-2"></span>
+            <span class="beyond-dot bbd-3"></span>
+          </div>
+          <div class="beyond-center">
+            <div class="beyond-glow"></div>
+          </div>
+          <div class="beyond-bridge">
+            <span class="beyond-dot bbd-4"></span>
+            <span class="beyond-dot bbd-5"></span>
+            <span class="beyond-dot bbd-6"></span>
+          </div>
+          <div class="beyond-world bw-corporate">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="1.3">
+              <rect x="3" y="8" width="18" height="14" rx="1"/><path d="M7 8V5a2 2 0 012-2h6a2 2 0 012 2v3"/>
+            </svg>
+            <span class="beyond-label">Product</span>
+          </div>
         </div>
         <div class="philosophy-card-body">
           <h3>Beyond Academia and Corporate</h3>
@@ -313,33 +703,65 @@
         </div>
       </div>
 
-      <!-- Card 5: Conscious Capitalism -->
+      <!-- Card 5: Conscious Capitalism — Four pillars rising -->
       <div class="philosophy-card">
-        <div class="philosophy-card-scene">
-          <div class="phil-float" style="width:8px;height:8px;background:var(--accent-2);top:20%;left:25%;animation-delay:0s;"></div>
-          <div class="phil-float" style="width:5px;height:5px;background:var(--accent-2);opacity:0.5;bottom:30%;right:20%;animation-delay:1s;"></div>
-          <div class="phil-float" style="width:6px;height:6px;background:var(--accent-2);opacity:0.3;top:40%;right:35%;animation-delay:2s;"></div>
-          <div class="phil-ring" style="width:60px;height:60px;border-color:rgba(0,212,170,0.15);top:50%;left:50%;"></div>
-          <div class="phil-ring" style="width:90px;height:90px;border-color:rgba(0,212,170,0.08);top:50%;left:50%;animation-delay:1.5s;"></div>
+        <div class="philosophy-card-scene phil-scene-conscious">
+          <div class="conscious-pillars">
+            <div class="conscious-pillar cp-1">
+              <div class="cp-bar"></div>
+              <span class="cp-label">Purpose</span>
+            </div>
+            <div class="conscious-pillar cp-2">
+              <div class="cp-bar"></div>
+              <span class="cp-label">Stakeholders</span>
+            </div>
+            <div class="conscious-pillar cp-3">
+              <div class="cp-bar"></div>
+              <span class="cp-label">Leadership</span>
+            </div>
+            <div class="conscious-pillar cp-4">
+              <div class="cp-bar"></div>
+              <span class="cp-label">Culture</span>
+            </div>
+          </div>
+          <div class="conscious-rise"></div>
         </div>
         <div class="philosophy-card-body">
           <h3>Conscious Capitalism</h3>
-          <p>Revenue is a signal — when people pay, you've built something they value. We don't choose what to build based on what sells. We choose based on what needs to exist. Our exit strategy: build it, prove it works, find the right partner to take it further.</p>
+          <p>John Mackey and Raj Sisodia showed that business can elevate humanity — not despite profit, but through it. We build on their four tenets: higher purpose beyond money, value for all stakeholders, conscious leadership, and a culture of trust. When a product genuinely helps people, the revenue follows. We don't trade one for the other.</p>
         </div>
       </div>
 
-      <!-- Card 6: Finite and Infinite Games (full width) -->
+      <!-- Card 6: Finite and Infinite Games (full width) — Infinite loop -->
       <div class="philosophy-card philosophy-card--full">
-        <div class="philosophy-card-scene">
-          <div class="phil-float" style="width:8px;height:8px;background:var(--accent-3);top:20%;left:25%;animation-delay:0s;"></div>
-          <div class="phil-float" style="width:5px;height:5px;background:var(--accent-3);opacity:0.5;bottom:30%;right:20%;animation-delay:1s;"></div>
-          <div class="phil-float" style="width:6px;height:6px;background:var(--accent-3);opacity:0.3;top:40%;right:35%;animation-delay:2s;"></div>
-          <div class="phil-ring" style="width:60px;height:60px;border-color:rgba(255,107,157,0.15);top:50%;left:50%;"></div>
-          <div class="phil-ring" style="width:90px;height:90px;border-color:rgba(255,107,157,0.08);top:50%;left:50%;animation-delay:1.5s;"></div>
+        <div class="philosophy-card-scene phil-scene-infinite">
+          <div class="infinite-visual">
+            <div class="finite-box">
+              <span class="finite-label">Finite</span>
+              <svg viewBox="0 0 30 30" width="22" height="22" fill="none">
+                <rect x="3" y="3" width="24" height="24" rx="2" stroke="rgba(255,107,157,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+                <path d="M10 15h10" stroke="rgba(255,107,157,0.3)" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="infinite-loop">
+              <svg class="infinity-svg" viewBox="0 0 80 40" width="80" height="40" fill="none">
+                <path class="infinity-path" d="M20 20 C20 10 30 10 40 20 C50 30 60 30 60 20 C60 10 50 10 40 20 C30 30 20 30 20 20Z" stroke="rgba(255,107,157,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="infinite-label">Infinite</span>
+            </div>
+            <div class="infinite-products">
+              <span class="inf-prod ip-1"></span>
+              <span class="inf-prod ip-2"></span>
+              <span class="inf-prod ip-3"></span>
+              <span class="inf-prod ip-4"></span>
+              <span class="inf-prod ip-5"></span>
+            </div>
+            <span class="lab-continues">the lab keeps running</span>
+          </div>
         </div>
         <div class="philosophy-card-body">
           <h3>Finite and Infinite Games</h3>
-          <p>James Carse wrote: "A finite player plays within boundaries; an infinite player plays with boundaries." The startup world is a finite game. We play the infinite game — to keep building, keep solving, keep the lab running. Over a long enough timeline, the infinite player builds more and generates more value than the finite player optimizing for it.</p>
+          <p>James Carse's book gave us a framework we keep coming back to. Finite games have winners and losers. Infinite games exist to keep the game going. His idea — that the most meaningful play is play that continues — shaped how we think about our lab: products come and go, some succeed, some serve quietly, but the lab keeps running. Carse helped us see that as a strategy, not a compromise.</p>
         </div>
       </div>
 
