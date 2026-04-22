@@ -5737,9 +5737,38 @@ body:hover .cursor-glow {
   line-height: 1.5;
 }
 
+.recognition-scene--nvidia {
+  width: 180px;
+  min-height: 100px;
+  background: #ffffff;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.3s;
+}
+
+.recognition-scene--nvidia:hover {
+  filter: brightness(1.02);
+}
+
+.nvidia-badge {
+  width: 100%;
+  height: auto;
+  max-width: 144px;
+  display: block;
+}
+
 @media (max-width: 768px) {
   .recognition-card {
     max-width: 100%;
+  }
+  .recognition-scene--nvidia {
+    width: 120px;
+    padding: 12px;
+  }
+  .nvidia-badge {
+    max-width: 96px;
   }
 }
 
