@@ -1,0 +1,376 @@
+/* ============================================================
+   TURINGS DESIGN — behavioral game studio
+   Shared system. Two faces: PLAY (warm) / MECHANISM (cool light).
+   Redraw, not crossfade. Animation only on active flip.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,30..100,0..1&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  /* PLAY face */
+  --warm-paper:        #FAF6EE;
+  --warm-paper-deep:   #F2EBD9;
+  --warm-ink:          #1A1410;
+  --warm-ink-soft:     #6B5E4F;
+  --warm-rule:         #C9BFAA;
+
+  /* MECHANISM face — cool LIGHT paper */
+  --cool-paper:        #ECEEF1;
+  --cool-paper-deep:   #DEE2E7;
+  --cool-ink:          #0E1116;
+  --cool-ink-soft:     #5A626D;
+  --cool-rule:         #98A0AC;
+
+  /* Resolved face vars */
+  --paper:    var(--warm-paper);
+  --paper-2:  var(--warm-paper-deep);
+  --ink:      var(--warm-ink);
+  --ink-soft: var(--warm-ink-soft);
+  --rule:     var(--warm-rule);
+
+  /* Type */
+  --display:    'Fraunces', 'Source Serif 4', Georgia, serif;
+  --body:       'Source Serif 4', Georgia, serif;
+  --mono:       'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Geometry */
+  --edge: 32px;
+  --hair: 1px;
+}
+
+@media (max-width: 760px) {
+  :root { --edge: 18px; }
+}
+
+/* The flip ------------------------------------------------ */
+body[data-face="mechanism"] {
+  --paper:    var(--cool-paper);
+  --paper-2:  var(--cool-paper-deep);
+  --ink:      var(--cool-ink);
+  --ink-soft: var(--cool-ink-soft);
+  --rule:     var(--cool-rule);
+}
+
+/* The flip transition is ONLY on the paper/ink swap and is
+   triggered by the .flipping-now class — never on page load. */
+body.flipping-now {
+  transition:
+    background-color 480ms cubic-bezier(.7,0,.2,1),
+    color            480ms cubic-bezier(.7,0,.2,1);
+}
+body.flipping-now * {
+  transition:
+    color            480ms cubic-bezier(.7,0,.2,1),
+    border-color     480ms cubic-bezier(.7,0,.2,1),
+    background-color 480ms cubic-bezier(.7,0,.2,1),
+    fill             480ms cubic-bezier(.7,0,.2,1),
+    stroke           480ms cubic-bezier(.7,0,.2,1),
+    filter           480ms cubic-bezier(.7,0,.2,1);
+}
+
+/* Base ---------------------------------------------------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--body);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Wordmark cluster + wayfinding (top-left, naked) --------- */
+.mark {
+  position: fixed;
+  top: var(--edge);
+  left: var(--edge);
+  z-index: 50;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  mix-blend-mode: difference;
+  color: #fdfaf3;
+}
+.mark a { opacity: .82; }
+.mark a:hover { opacity: 1; }
+.mark .home {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  opacity: 1;
+}
+.mark .sep {
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: .4;
+  align-self: center;
+  transform: translateY(-1px);
+}
+
+/* a tiny "back to top" exit appears on scroll */
+.exit {
+  position: fixed;
+  bottom: 22px;
+  left: var(--edge);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 250ms ease;
+  z-index: 50;
+  cursor: pointer;
+  background: none; border: none; padding: 0;
+}
+.exit.show { opacity: 1; }
+
+/* TOGGLE primitive --------------------------------------- */
+.toggle-host {
+  position: fixed;
+  top: var(--edge);
+  right: var(--edge);
+  z-index: 60;
+  user-select: none;
+}
+@media (max-width: 760px) {
+  .toggle-host {
+    top: auto;
+    right: 50%;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(50%);
+  }
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper);
+  padding: 8px 14px 8px 14px;
+  border: 1px solid var(--ink);
+}
+.toggle .lbl {
+  cursor: pointer;
+  opacity: .42;
+  transition: opacity 220ms ease;
+  padding: 2px 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.toggle .lbl.is-active { opacity: 1; }
+.toggle .track {
+  position: relative;
+  width: 88px;
+  height: 14px;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+}
+.toggle .ind {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  width: 44px;
+  background: var(--ink);
+  transition: transform 360ms cubic-bezier(.7,0,.2,1);
+}
+body[data-face="mechanism"] .toggle .ind {
+  transform: translateX(44px);
+}
+
+/* Pre-arm pulse only on entrance, only before first flip */
+body.armed .toggle .track::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--ink);
+  opacity: 0;
+  animation: arm-pulse 3.6s ease-out infinite;
+}
+@keyframes arm-pulse {
+  0%   { opacity: 0; transform: scale(1); }
+  10%  { opacity: 0.5; }
+  60%  { opacity: 0; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(1.15); }
+}
+
+/* Face content: two layers per redraw block ---------------- */
+.face {
+  display: contents;
+}
+.face-play { display: block; }
+.face-mech { display: none; }
+body[data-face="mechanism"] .face-play { display: none; }
+body[data-face="mechanism"] .face-mech { display: block; }
+
+/* The .redraw container stacks both faces.
+   Inactive face goes visibility:hidden so it leaves the tab order
+   and the AX tree. During an active flip both are made visible
+   so the cross-fade can play. */
+.redraw {
+  position: relative;
+}
+.redraw .face-play,
+.redraw .face-mech {
+  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+body[data-face="play"] .redraw .face-play {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+body[data-face="mechanism"] .redraw .face-mech {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+body[data-face="mechanism"] .redraw .face-play {
+  filter: saturate(0) brightness(1.04);
+}
+
+/* Active flip: both faces visible for the cross-fade window */
+body.flipping-now .redraw .face-play,
+body.flipping-now .redraw .face-mech {
+  visibility: visible;
+  transition: opacity 420ms ease, filter 480ms ease;
+}
+body.flipping-now.long .redraw .face-play,
+body.flipping-now.long .redraw .face-mech {
+  transition: opacity 700ms ease, filter 700ms ease;
+}
+
+/* SVG line-trace utility */
+.trace path,
+.trace line,
+.trace polyline,
+.trace circle,
+.trace rect,
+.trace ellipse {
+  stroke-dasharray: var(--len, 1200);
+  stroke-dashoffset: var(--len, 1200);
+}
+body[data-face="mechanism"] .trace path,
+body[data-face="mechanism"] .trace line,
+body[data-face="mechanism"] .trace polyline,
+body[data-face="mechanism"] .trace circle,
+body[data-face="mechanism"] .trace rect,
+body[data-face="mechanism"] .trace ellipse {
+  stroke-dashoffset: 0;
+}
+body.flipping-now .trace path,
+body.flipping-now .trace line,
+body.flipping-now .trace polyline,
+body.flipping-now .trace circle,
+body.flipping-now .trace rect,
+body.flipping-now .trace ellipse {
+  transition: stroke-dashoffset 600ms cubic-bezier(.5,.1,.2,1) 80ms;
+}
+body.flipping-now.long .trace path,
+body.flipping-now.long .trace line,
+body.flipping-now.long .trace polyline,
+body.flipping-now.long .trace circle,
+body.flipping-now.long .trace rect,
+body.flipping-now.long .trace ellipse {
+  transition: stroke-dashoffset 900ms cubic-bezier(.5,.1,.2,1) 100ms;
+}
+
+/* mech labels reveal with a mask-wipe */
+.mech-label {
+  display: inline-block;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
+.mech-label > span {
+  display: inline-block;
+  transform: translateY(0);
+}
+body.flipping-now .mech-label > span {
+  animation: label-wipe 520ms cubic-bezier(.7,0,.2,1) both;
+}
+body.flipping-now.long .mech-label > span {
+  animation-duration: 700ms;
+}
+@keyframes label-wipe {
+  0%   { transform: translateY(105%); opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Striped art placeholder ---------------------------------- */
+.placeholder {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--paper-2) 0 14px,
+    var(--paper)  14px 28px
+  );
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+.placeholder .ph-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 12px 16px;
+}
+
+/* Mono caption util */
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.mono-sm { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; }
+.mono-md { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; }
+
+/* Display util */
+.display {
+  font-family: var(--display);
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* hairline rule */
+.rule { height: 1px; background: var(--rule); width: 100%; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body.flipping-now * { transition-duration: 1ms !important; }
+  body.flipping-now .trace * { transition-duration: 1ms !important; }
+  body.flipping-now .mech-label > span { animation: none !important; }
+}
